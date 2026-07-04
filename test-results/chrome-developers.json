@@ -1,0 +1,174 @@
+{
+  "report": {
+    "title": "Chrome Developers",
+    "url": "https://developer.chrome.com",
+    "generatedAt": "2026-07-04T12:13:03.858Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 18 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:89fbff51-7d67-44dd-a70c-9ba465e6b2d7",
+      "impact:a11y-001",
+      "priority:a11y-001",
+      "action:a11y-001",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Accessibility — Content",
+      "technicalDebt",
+      "impact:a11y-001",
+      "priority:a11y-001",
+      "roadmap:a11y-001"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://developer.chrome.com identified 1 findings across 1 categories. 0 require immediate attention. Estimated total remediation effort: 3 hours.",
+    "overallRisk": "CLEAN — No significant issues found",
+    "totalFindings": 1,
+    "bySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 0,
+      "accessibility": 1,
+      "performance": 0,
+      "security": 0,
+      "best-practice": 0
+    },
+    "topAction": "Address \"Image elements have alternate text\" (Add descriptive alt text to all images. Use alt='' for decorative images.)",
+    "estimatedTimeline": "1-2 days",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "1 findings grouped into 1 categories. Total estimated effort: 3 hours.",
+    "groups": [
+      {
+        "name": "Accessibility — Content",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Image elements have alternate text",
+            "severity": "low",
+            "recommendation": "Add descriptive alt text to all images. Use alt='' for decorative images."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Manageable technical debt. Most issues can be addressed with standard development effort.",
+    "quickWins": [],
+    "confidence": {
+      "score": 1,
+      "rationale": "2 data points verified",
+      "verifiedDataPoints": [
+        "group:Accessibility — Content",
+        "technicalDebt"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 3 hours ($450 at $150/hr). 1 findings with business impact assessments.",
+    "totalEffortHours": 3,
+    "estimatedCost": 450,
+    "impactSummary": [
+      {
+        "findingId": "a11y-001",
+        "title": "Image elements have alternate text",
+        "businessImpact": "low",
+        "effort": "easy",
+        "effortHours": 3,
+        "priorityScore": 26
+      }
+    ],
+    "roi": "No critical business impact issues identified.",
+    "confidence": {
+      "score": 1,
+      "rationale": "2 data points verified",
+      "verifiedDataPoints": [
+        "impact:a11y-001",
+        "priority:a11y-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "1 phases planned over 1-2 days. Total effort: 3 hours.",
+    "phases": [
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "a11y-001",
+            "title": "Image elements have alternate text",
+            "action": "Add descriptive alt text to all images. Use alt='' for decorative images.",
+            "effort": "easy",
+            "effortHours": 3,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Add descriptive alt text to all images. Use alt='' for decorative images.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 3,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:a11y-001"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 3,
+    "estimatedTimeline": "1-2 days",
+    "confidence": {
+      "score": 1,
+      "rationale": "1 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:a11y-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}

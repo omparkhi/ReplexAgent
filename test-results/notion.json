@@ -1,0 +1,553 @@
+{
+  "report": {
+    "title": "Notion",
+    "url": "https://www.notion.so",
+    "generatedAt": "2026-07-04T12:09:30.001Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 78 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:a4a20095-af64-4b56-9534-1eb62835e33b",
+      "findingGroup:26935fee-42b3-428b-beaa-ba5ecf1bd83b",
+      "findingGroup:c6954f0e-c38f-46e4-9531-1b3336f30e95",
+      "findingGroup:318af4fc-68d1-4340-a868-3e1c97c8c271",
+      "findingGroup:ec89225b-4874-4755-b326-d7bc2cded493",
+      "findingGroup:e56a0be4-31f0-474e-b169-8f65d9420e93",
+      "findingGroup:e1111885-7fb7-40e1-b96e-ca01601c3ac3",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:seo-002",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:a11y-002",
+      "priority:bp-001",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:a11y-001",
+      "action:seo-002",
+      "action:perf-001",
+      "action:perf-002",
+      "action:perf-003",
+      "action:a11y-002",
+      "action:bp-001",
+      "action:seo-001",
+      "action:bp-002",
+      "action:a11y-001",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Performance — Performance",
+      "group:Accessibility — Technical",
+      "group:SEO — Technical",
+      "group:Security — Technical",
+      "group:Accessibility — Content",
+      "group:SEO — Content",
+      "group:Best Practice — Technical",
+      "technicalDebt",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:seo-002",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:a11y-002",
+      "priority:bp-001",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:a11y-001",
+      "roadmap:seo-002",
+      "roadmap:perf-001",
+      "roadmap:perf-002",
+      "roadmap:perf-003",
+      "roadmap:a11y-002",
+      "roadmap:bp-001",
+      "roadmap:seo-001",
+      "roadmap:bp-002",
+      "roadmap:a11y-001"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://www.notion.so identified 9 findings across 5 categories. 0 require immediate attention. Estimated total remediation effort: 47 hours.",
+    "overallRisk": "MODERATE — Multiple moderate issues",
+    "totalFindings": 9,
+    "bySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 6,
+      "low": 3,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 2,
+      "accessibility": 2,
+      "performance": 3,
+      "security": 1,
+      "best-practice": 1
+    },
+    "topAction": "Address \"Largest Contentful Paint (LCP) slightly exceeds 2.5s\" (Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.)",
+    "estimatedTimeline": "2-4 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "9 findings grouped into 7 categories. Total estimated effort: 47 hours.",
+    "groups": [
+      {
+        "name": "Performance — Performance",
+        "count": 3,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Largest Contentful Paint (LCP) slightly exceeds 2.5s",
+            "severity": "medium",
+            "recommendation": "Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content."
+          },
+          {
+            "id": "perf-002",
+            "title": "Total Blocking Time (TBT) needs improvement",
+            "severity": "medium",
+            "recommendation": "Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation."
+          },
+          {
+            "id": "perf-003",
+            "title": "Serve images in next-gen formats",
+            "severity": "medium",
+            "recommendation": "Convert product screenshots to WebP with JPEG fallback for older browsers."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "a11y-002",
+            "title": "ARIA attributes do not match their roles",
+            "severity": "medium",
+            "recommendation": "Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "seo-002",
+            "title": "Links are not crawlable",
+            "severity": "medium",
+            "recommendation": "Use proper <a href='...'> elements for navigation links. JavaScript handlers should enhance, not replace, HTML links."
+          }
+        ]
+      },
+      {
+        "name": "Security — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Uses a library with known security vulnerabilities",
+            "severity": "medium",
+            "recommendation": "Update lodash to version 4.17.21 or later."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Some links have the same accessible name as their destination",
+            "severity": "low",
+            "recommendation": "Use descriptive link text that indicates the destination or purpose."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Content",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Image elements do not have [alt] attributes",
+            "severity": "low",
+            "recommendation": "Add alt='' to decorative images and descriptive alt text to informational images."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-002",
+            "title": "Missing Permissions-Policy header",
+            "severity": "low",
+            "recommendation": "Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Manageable technical debt. Most issues can be addressed with standard development effort.",
+    "quickWins": [],
+    "confidence": {
+      "score": 1,
+      "rationale": "8 data points verified",
+      "verifiedDataPoints": [
+        "group:Performance — Performance",
+        "group:Accessibility — Technical",
+        "group:SEO — Technical",
+        "group:Security — Technical",
+        "group:Accessibility — Content",
+        "group:SEO — Content",
+        "group:Best Practice — Technical",
+        "technicalDebt"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 47.1 hours ($7,065 at $150/hr). 9 findings with business impact assessments.",
+    "totalEffortHours": 47.1,
+    "estimatedCost": 7065,
+    "impactSummary": [
+      {
+        "findingId": "seo-002",
+        "title": "Links are not crawlable",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 4.5,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "perf-001",
+        "title": "Largest Contentful Paint (LCP) slightly exceeds 2.5s",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Total Blocking Time (TBT) needs improvement",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "perf-003",
+        "title": "Serve images in next-gen formats",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "a11y-002",
+        "title": "ARIA attributes do not match their roles",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Uses a library with known security vulnerabilities",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 12,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Image elements do not have [alt] attributes",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Missing Permissions-Policy header",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "a11y-001",
+        "title": "Some links have the same accessible name as their destination",
+        "businessImpact": "low",
+        "effort": "easy",
+        "effortHours": 3,
+        "priorityScore": 26
+      }
+    ],
+    "roi": "No critical business impact issues identified.",
+    "confidence": {
+      "score": 1,
+      "rationale": "18 data points verified",
+      "verifiedDataPoints": [
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:perf-003",
+        "impact:a11y-001",
+        "impact:a11y-002",
+        "impact:seo-001",
+        "impact:seo-002",
+        "impact:bp-001",
+        "impact:bp-002",
+        "priority:seo-002",
+        "priority:perf-001",
+        "priority:perf-002",
+        "priority:perf-003",
+        "priority:a11y-002",
+        "priority:bp-001",
+        "priority:seo-001",
+        "priority:bp-002",
+        "priority:a11y-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "2 phases planned over 2-4 weeks. Total effort: 47.099999999999994 hours.",
+    "phases": [
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "seo-002",
+            "title": "Links are not crawlable",
+            "action": "Use proper <a href='...'> elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.",
+            "effort": "easy",
+            "effortHours": 4.5,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Use proper <a href='...'> elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-001",
+            "title": "Largest Contentful Paint (LCP) slightly exceeds 2.5s",
+            "action": "Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Total Blocking Time (TBT) needs improvement",
+            "action": "Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-003",
+            "title": "Serve images in next-gen formats",
+            "action": "Convert product screenshots to WebP with JPEG fallback for older browsers.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Convert product screenshots to WebP with JPEG fallback for older browsers.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-002",
+            "title": "ARIA attributes do not match their roles",
+            "action": "Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-001",
+            "title": "Uses a library with known security vulnerabilities",
+            "action": "Update lodash to version 4.17.21 or later.",
+            "effort": "moderate",
+            "effortHours": 12,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Update lodash to version 4.17.21 or later.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 41.099999999999994,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-002",
+            "action:perf-001",
+            "action:perf-002",
+            "action:perf-003",
+            "action:a11y-002",
+            "action:bp-001"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Image elements do not have [alt] attributes",
+            "action": "Add alt='' to decorative images and descriptive alt text to informational images.",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Add alt='' to decorative images and descriptive alt text to informational images.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-002",
+            "title": "Missing Permissions-Policy header",
+            "action": "Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Some links have the same accessible name as their destination",
+            "action": "Use descriptive link text that indicates the destination or purpose.",
+            "effort": "easy",
+            "effortHours": 3,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Use descriptive link text that indicates the destination or purpose.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 6,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:bp-002",
+            "action:a11y-001"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 47.099999999999994,
+    "estimatedTimeline": "2-4 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "9 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:seo-002",
+        "roadmap:perf-001",
+        "roadmap:perf-002",
+        "roadmap:perf-003",
+        "roadmap:a11y-002",
+        "roadmap:bp-001",
+        "roadmap:seo-001",
+        "roadmap:bp-002",
+        "roadmap:a11y-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}

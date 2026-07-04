@@ -1,0 +1,467 @@
+{
+  "report": {
+    "title": "Stripe — Financial infrastructure for the internet",
+    "url": "https://stripe.com",
+    "generatedAt": "2026-07-04T12:09:30.353Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 64 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:2958dcb3-dd3f-4596-9c04-bd1c8e6135a8",
+      "findingGroup:53d1122b-47cc-49a7-80f6-e31808567c78",
+      "findingGroup:d129bb49-3ada-41c7-9bfe-18f1f853fef4",
+      "findingGroup:afa5f0a1-2111-48dd-83e1-6fc8ef87541f",
+      "findingGroup:75e3b2d2-7814-4104-86c2-af1216a30d16",
+      "findingGroup:e0b6a5f5-187f-49a2-8a95-ef6456e75a99",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:seo-001",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:a11y-001",
+      "priority:a11y-002",
+      "priority:seo-001",
+      "priority:bp-001",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:bp-002",
+      "action:a11y-002",
+      "action:a11y-001",
+      "action:seo-001",
+      "action:bp-001",
+      "action:perf-001",
+      "action:perf-002",
+      "action:bp-002",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Accessibility — Technical",
+      "group:Accessibility — Content",
+      "group:Performance — Performance",
+      "group:SEO — Metadata",
+      "group:Best Practice — Technical",
+      "group:Security — Technical",
+      "technicalDebt",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:seo-001",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:a11y-001",
+      "priority:a11y-002",
+      "priority:seo-001",
+      "priority:bp-001",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:bp-002",
+      "roadmap:a11y-002",
+      "roadmap:a11y-001",
+      "roadmap:seo-001",
+      "roadmap:bp-001",
+      "roadmap:perf-001",
+      "roadmap:perf-002",
+      "roadmap:bp-002"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://stripe.com identified 7 findings across 5 categories. 0 require immediate attention. Estimated total remediation effort: 29 hours.",
+    "overallRisk": "LOW — Minor improvements recommended",
+    "totalFindings": 7,
+    "bySeverity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 5,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 1,
+      "accessibility": 2,
+      "performance": 2,
+      "security": 1,
+      "best-practice": 1
+    },
+    "topAction": "Address \"Largest Contentful Paint (LCP) could be faster\" (Consider making the hero animation optional or reducing its duration for faster content display.)",
+    "estimatedTimeline": "1-2 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "7 findings grouped into 6 categories. Total estimated effort: 29 hours.",
+    "groups": [
+      {
+        "name": "Accessibility — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Interactive elements not keyboard accessible",
+            "severity": "medium",
+            "recommendation": "Add tabindex='0' and keyboard event handlers to custom interactive elements."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "a11y-002",
+            "title": "Focus indicators missing on some interactive elements",
+            "severity": "medium",
+            "recommendation": "Add visible focus styles (:focus-visible) to all interactive elements."
+          }
+        ]
+      },
+      {
+        "name": "Performance — Performance",
+        "count": 2,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Largest Contentful Paint (LCP) could be faster",
+            "severity": "low",
+            "recommendation": "Consider making the hero animation optional or reducing its duration for faster content display."
+          },
+          {
+            "id": "perf-002",
+            "title": "Reduce unused JavaScript",
+            "severity": "low",
+            "recommendation": "Code-split marketing scripts and load A/B testing tools on demand."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Metadata",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Social media meta tags incomplete",
+            "severity": "low",
+            "recommendation": "Add og:image, og:image:width, og:image:height, and twitter:card meta tags."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Missing Permissions-Policy header",
+            "severity": "low",
+            "recommendation": "Set Permissions-Policy to restrict unused features: camera=(), microphone=(), geolocation=()."
+          }
+        ]
+      },
+      {
+        "name": "Security — Technical",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-002",
+            "title": "Subresource Integrity (SRI) missing",
+            "severity": "low",
+            "recommendation": "Add integrity and crossorigin attributes to all third-party script tags."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Manageable technical debt. Most issues can be addressed with standard development effort.",
+    "quickWins": [],
+    "confidence": {
+      "score": 1,
+      "rationale": "7 data points verified",
+      "verifiedDataPoints": [
+        "group:Accessibility — Technical",
+        "group:Accessibility — Content",
+        "group:Performance — Performance",
+        "group:SEO — Metadata",
+        "group:Best Practice — Technical",
+        "group:Security — Technical",
+        "technicalDebt"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 28.9 hours ($4,335 at $150/hr). 7 findings with business impact assessments.",
+    "totalEffortHours": 28.9,
+    "estimatedCost": 4335,
+    "impactSummary": [
+      {
+        "findingId": "a11y-001",
+        "title": "Interactive elements not keyboard accessible",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "a11y-002",
+        "title": "Focus indicators missing on some interactive elements",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 6,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Social media meta tags incomplete",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.2,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Missing Permissions-Policy header",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "perf-001",
+        "title": "Largest Contentful Paint (LCP) could be faster",
+        "businessImpact": "low",
+        "effort": "easy",
+        "effortHours": 2.6,
+        "priorityScore": 26
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Reduce unused JavaScript",
+        "businessImpact": "low",
+        "effort": "easy",
+        "effortHours": 2.6,
+        "priorityScore": 26
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Subresource Integrity (SRI) missing",
+        "businessImpact": "low",
+        "effort": "moderate",
+        "effortHours": 6,
+        "priorityScore": 20
+      }
+    ],
+    "roi": "No critical business impact issues identified.",
+    "confidence": {
+      "score": 1,
+      "rationale": "14 data points verified",
+      "verifiedDataPoints": [
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:a11y-001",
+        "impact:a11y-002",
+        "impact:seo-001",
+        "impact:bp-001",
+        "impact:bp-002",
+        "priority:a11y-001",
+        "priority:a11y-002",
+        "priority:seo-001",
+        "priority:bp-001",
+        "priority:perf-001",
+        "priority:perf-002",
+        "priority:bp-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "2 phases planned over 1-2 weeks. Total effort: 28.9 hours.",
+    "phases": [
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "a11y-002",
+            "title": "Focus indicators missing on some interactive elements",
+            "action": "Add visible focus styles (:focus-visible) to all interactive elements.",
+            "effort": "moderate",
+            "effortHours": 6,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Add visible focus styles (:focus-visible) to all interactive elements.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Interactive elements not keyboard accessible",
+            "action": "Add tabindex='0' and keyboard event handlers to custom interactive elements.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add tabindex='0' and keyboard event handlers to custom interactive elements.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 15,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:a11y-002",
+            "action:a11y-001"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Social media meta tags incomplete",
+            "action": "Add og:image, og:image:width, og:image:height, and twitter:card meta tags.",
+            "effort": "trivial",
+            "effortHours": 1.2,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add og:image, og:image:width, og:image:height, and twitter:card meta tags.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-001",
+            "title": "Missing Permissions-Policy header",
+            "action": "Set Permissions-Policy to restrict unused features: camera=(), microphone=(), geolocation=().",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Set Permissions-Policy to restrict unused features: camera=(), microphone=(), geolocation=().",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-001",
+            "title": "Largest Contentful Paint (LCP) could be faster",
+            "action": "Consider making the hero animation optional or reducing its duration for faster content display.",
+            "effort": "easy",
+            "effortHours": 2.6,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Consider making the hero animation optional or reducing its duration for faster content display.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Reduce unused JavaScript",
+            "action": "Code-split marketing scripts and load A/B testing tools on demand.",
+            "effort": "easy",
+            "effortHours": 2.6,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Code-split marketing scripts and load A/B testing tools on demand.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-002",
+            "title": "Subresource Integrity (SRI) missing",
+            "action": "Add integrity and crossorigin attributes to all third-party script tags.",
+            "effort": "moderate",
+            "effortHours": 6,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add integrity and crossorigin attributes to all third-party script tags.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 13.9,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:bp-001",
+            "action:perf-001",
+            "action:perf-002",
+            "action:bp-002"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 28.9,
+    "estimatedTimeline": "1-2 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "7 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:a11y-002",
+        "roadmap:a11y-001",
+        "roadmap:seo-001",
+        "roadmap:bp-001",
+        "roadmap:perf-001",
+        "roadmap:perf-002",
+        "roadmap:bp-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}

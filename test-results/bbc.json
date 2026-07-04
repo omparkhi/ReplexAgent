@@ -1,0 +1,520 @@
+{
+  "report": {
+    "title": "BBC",
+    "url": "https://www.bbc.com",
+    "generatedAt": "2026-07-04T12:09:29.705Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 70 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:cdc20754-d42d-4efd-9014-df33bba4d6e4",
+      "findingGroup:f54ebe56-9038-46e4-8fbc-163c7d2648be",
+      "findingGroup:7a663fa8-82e9-44d8-af4b-e869239a96aa",
+      "findingGroup:fabf8edc-de71-4886-890a-d33d1badbbb2",
+      "findingGroup:f76b958f-681d-48d7-95d7-1146f00a3626",
+      "findingGroup:b9d2b310-b804-4d03-aa83-466c29ef2613",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:a11y-001",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:perf-003",
+      "priority:a11y-001",
+      "priority:seo-002",
+      "priority:bp-001",
+      "action:perf-001",
+      "action:perf-002",
+      "action:bp-002",
+      "action:seo-001",
+      "action:perf-003",
+      "action:a11y-001",
+      "action:seo-002",
+      "action:bp-001",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Performance — Performance",
+      "group:Security — Technical",
+      "group:Accessibility — Content",
+      "group:SEO — Metadata",
+      "group:Accessibility — Technical",
+      "group:Best Practice — Technical",
+      "technicalDebt",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:a11y-001",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:perf-003",
+      "priority:a11y-001",
+      "priority:seo-002",
+      "priority:bp-001",
+      "roadmap:perf-001",
+      "roadmap:perf-002",
+      "roadmap:bp-002",
+      "roadmap:seo-001",
+      "roadmap:perf-003",
+      "roadmap:a11y-001",
+      "roadmap:seo-002",
+      "roadmap:bp-001"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://www.bbc.com identified 8 findings across 5 categories. 3 require immediate attention. Estimated total remediation effort: 58 hours.",
+    "overallRisk": "HIGH — Significant issues need attention",
+    "totalFindings": 8,
+    "bySeverity": {
+      "critical": 0,
+      "high": 3,
+      "medium": 4,
+      "low": 1,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 1,
+      "accessibility": 2,
+      "performance": 3,
+      "security": 1,
+      "best-practice": 1
+    },
+    "topAction": "Address \"Largest Contentful Paint (LCP) exceeds 2.5s\" (Optimize the hero image with modern formats (WebP/AVIF), implement preload hints, and reduce server response time.)",
+    "estimatedTimeline": "2-4 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "8 findings grouped into 6 categories. Total estimated effort: 58 hours.",
+    "groups": [
+      {
+        "name": "Performance — Performance",
+        "count": 3,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 2.5s",
+            "severity": "high",
+            "recommendation": "Optimize the hero image with modern formats (WebP/AVIF), implement preload hints, and reduce server response time."
+          },
+          {
+            "id": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "severity": "high",
+            "recommendation": "Break up long tasks, defer non-critical JavaScript, and use web workers for heavy computation."
+          },
+          {
+            "id": "perf-003",
+            "title": "Eliminate render-blocking resources",
+            "severity": "medium",
+            "recommendation": "Inline critical CSS, defer non-critical stylesheets, and add async/defer attributes to scripts."
+          }
+        ]
+      },
+      {
+        "name": "Security — Technical",
+        "count": 1,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "bp-002",
+            "title": "Missing CSP header",
+            "severity": "high",
+            "recommendation": "Implement a Content-Security-Policy header with appropriate directives."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Background and foreground colors do not have sufficient contrast ratio",
+            "severity": "medium",
+            "recommendation": "Increase color contrast to meet WCAG AA (4.5:1 for normal text)."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Metadata",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Document does not have a meta description",
+            "severity": "medium",
+            "recommendation": "Add a unique, compelling meta description (120-160 characters) to each page."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "seo-002",
+            "title": "Links do not have a discernible name",
+            "severity": "medium",
+            "recommendation": "Add text content, aria-label, or aria-labelledby to all links."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Uses deprecated APIs",
+            "severity": "low",
+            "recommendation": "Replace deprecated APIs with modern equivalents. Check browser compatibility before removing fallbacks."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Significant technical debt detected. 1 issues require complex refactoring (~18 hours).",
+    "quickWins": [],
+    "confidence": {
+      "score": 1,
+      "rationale": "7 data points verified",
+      "verifiedDataPoints": [
+        "group:Performance — Performance",
+        "group:Security — Technical",
+        "group:Accessibility — Content",
+        "group:SEO — Metadata",
+        "group:Accessibility — Technical",
+        "group:Best Practice — Technical",
+        "technicalDebt"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 57.7 hours ($8,655 at $150/hr). 8 findings with business impact assessments.",
+    "totalEffortHours": 57.7,
+    "estimatedCost": 8655,
+    "impactSummary": [
+      {
+        "findingId": "perf-001",
+        "title": "Largest Contentful Paint (LCP) exceeds 2.5s",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Total Blocking Time (TBT) exceeds 200ms",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Document does not have a meta description",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 2.4,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Missing CSP header",
+        "businessImpact": "high",
+        "effort": "difficult",
+        "effortHours": 18,
+        "priorityScore": 42
+      },
+      {
+        "findingId": "perf-003",
+        "title": "Eliminate render-blocking resources",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "a11y-001",
+        "title": "Background and foreground colors do not have sufficient contrast ratio",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 6,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "seo-002",
+        "title": "Links do not have a discernible name",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Uses deprecated APIs",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      }
+    ],
+    "roi": "Addressing 3 high-impact issues first will reduce critical risk exposure. Estimated investment: $8,655 for 57.7 hours of work.",
+    "confidence": {
+      "score": 1,
+      "rationale": "16 data points verified",
+      "verifiedDataPoints": [
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:perf-003",
+        "impact:a11y-001",
+        "impact:seo-001",
+        "impact:seo-002",
+        "impact:bp-001",
+        "impact:bp-002",
+        "priority:perf-001",
+        "priority:perf-002",
+        "priority:seo-001",
+        "priority:bp-002",
+        "priority:perf-003",
+        "priority:a11y-001",
+        "priority:seo-002",
+        "priority:bp-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "3 phases planned over 2-4 weeks. Total effort: 57.7 hours.",
+    "phases": [
+      {
+        "name": "Phase 2: High Priority",
+        "description": "Resolve high severity issues",
+        "timeframe": "1-2 weeks",
+        "items": [
+          {
+            "findingId": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 2.5s",
+            "action": "Optimize the hero image with modern formats (WebP/AVIF), implement preload hints, and reduce server response time.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Optimize the hero image with modern formats (WebP/AVIF), implement preload hints, and reduce server response time.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "action": "Break up long tasks, defer non-critical JavaScript, and use web workers for heavy computation.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Break up long tasks, defer non-critical JavaScript, and use web workers for heavy computation.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-002",
+            "title": "Missing CSP header",
+            "action": "Implement a Content-Security-Policy header with appropriate directives.",
+            "effort": "difficult",
+            "effortHours": 18,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Implement a Content-Security-Policy header with appropriate directives.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 33.6,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:perf-001",
+            "action:perf-002",
+            "action:bp-002"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Document does not have a meta description",
+            "action": "Add a unique, compelling meta description (120-160 characters) to each page.",
+            "effort": "easy",
+            "effortHours": 2.4,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add a unique, compelling meta description (120-160 characters) to each page.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-003",
+            "title": "Eliminate render-blocking resources",
+            "action": "Inline critical CSS, defer non-critical stylesheets, and add async/defer attributes to scripts.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Inline critical CSS, defer non-critical stylesheets, and add async/defer attributes to scripts.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Background and foreground colors do not have sufficient contrast ratio",
+            "action": "Increase color contrast to meet WCAG AA (4.5:1 for normal text).",
+            "effort": "moderate",
+            "effortHours": 6,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Increase color contrast to meet WCAG AA (4.5:1 for normal text).",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "seo-002",
+            "title": "Links do not have a discernible name",
+            "action": "Add text content, aria-label, or aria-labelledby to all links.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add text content, aria-label, or aria-labelledby to all links.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 22.6,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:perf-003",
+            "action:a11y-001",
+            "action:seo-002"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "bp-001",
+            "title": "Uses deprecated APIs",
+            "action": "Replace deprecated APIs with modern equivalents. Check browser compatibility before removing fallbacks.",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Replace deprecated APIs with modern equivalents. Check browser compatibility before removing fallbacks.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 1.5,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:bp-001"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 57.7,
+    "estimatedTimeline": "2-4 weeks",
+    "confidence": {
+      "score": 1,
+      "rationale": "8 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:perf-001",
+        "roadmap:perf-002",
+        "roadmap:bp-002",
+        "roadmap:seo-001",
+        "roadmap:perf-003",
+        "roadmap:a11y-001",
+        "roadmap:seo-002",
+        "roadmap:bp-001"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}

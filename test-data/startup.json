@@ -1,0 +1,156 @@
+{
+  "url": "https://www.notion.so",
+  "title": "Notion",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T11:00:00Z",
+  "scores": {
+    "performance": 72,
+    "accessibility": 92,
+    "seo": 89,
+    "bestPractices": 85
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 1200, "unit": "ms", "score": 0.7 },
+    "largestContentfulPaint": { "value": 2800, "unit": "ms", "score": 0.6 },
+    "totalBlockingTime": { "value": 320, "unit": "ms", "score": 0.6 },
+    "cumulativeLayoutShift": { "value": 0.05, "unit": "score", "score": 0.9 },
+    "speedIndex": { "value": 2200, "unit": "ms", "score": 0.6 },
+    "interactive": { "value": 3500, "unit": "ms", "score": 0.5 },
+    "serverResponseTime": { "value": 180, "unit": "ms", "score": 0.8 }
+  },
+  "findings": [
+    {
+      "id": "perf-001",
+      "title": "Largest Contentful Paint (LCP) slightly exceeds 2.5s",
+      "description": "LCP of 2800ms is in the 'needs improvement' range. The main content loads slowly on mobile networks.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:largest-contentful-paint-element",
+      "recommendation": "Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.",
+      "metadata": { "metric": "LCP", "value": 2800, "target": 2500, "element": ".hero-screenshot" }
+    },
+    {
+      "id": "perf-002",
+      "title": "Total Blocking Time (TBT) needs improvement",
+      "description": "TBT of 320ms exceeds the 200ms target. Some JavaScript tasks block interactivity during load.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:mainthread-work-breakdown",
+      "recommendation": "Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.",
+      "metadata": { "metric": "TBT", "value": 320, "target": 200 }
+    },
+    {
+      "id": "perf-003",
+      "title": "Serve images in next-gen formats",
+      "description": "8 product screenshots are served as PNG where WebP would reduce size by 35-45%.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:uses-webp-images",
+      "recommendation": "Convert product screenshots to WebP with JPEG fallback for older browsers.",
+      "metadata": { "wastedBytes": 180000, "resourceCount": 8 }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Some links have the same accessible name as their destination",
+      "description": "5 links use the URL as their accessible name instead of descriptive text, confusing screen reader users.",
+      "severity": "low",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:link-name",
+      "recommendation": "Use descriptive link text that indicates the destination or purpose.",
+      "metadata": { "elementCount": 5, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-002",
+      "title": "ARIA attributes do not match their roles",
+      "description": "2 dropdown menus use aria-expanded incorrectly, providing wrong state information to assistive technologies.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:aria-allowed-attr",
+      "recommendation": "Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.",
+      "metadata": { "elementCount": 2, "wcagLevel": "A" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Image elements do not have [alt] attributes",
+      "description": "4 decorative images lack alt attributes. While decorative images should have alt='', they still need the attribute present.",
+      "severity": "low",
+      "category": "seo",
+      "type": "content",
+      "rule": "Lighthouse:image-alt",
+      "recommendation": "Add alt='' to decorative images and descriptive alt text to informational images.",
+      "metadata": { "elementCount": 4 }
+    },
+    {
+      "id": "seo-002",
+      "title": "Links are not crawlable",
+      "description": "3 links use JavaScript onclick handlers instead of proper href attributes, preventing search engine crawling.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "technical",
+      "rule": "Lighthouse:link-crawlable",
+      "recommendation": "Use proper <a href='...'> elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.",
+      "metadata": { "elementCount": 3 }
+    },
+    {
+      "id": "bp-001",
+      "title": "Uses a library with known security vulnerabilities",
+      "description": "Lodash 4.17.20 has a known prototype pollution vulnerability (CVE-2021-23337).",
+      "severity": "medium",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:audit-dependency",
+      "recommendation": "Update lodash to version 4.17.21 or later.",
+      "metadata": { "library": "lodash", "currentVersion": "4.17.20", "fixedVersion": "4.17.21", "cve": "CVE-2021-23337" }
+    },
+    {
+      "id": "bp-002",
+      "title": "Missing Permissions-Policy header",
+      "description": "No Permissions-Policy header is set, allowing all browser features by default.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:permissions-policy",
+      "recommendation": "Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.",
+      "metadata": {}
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Preconnect to required origins",
+      "description": "3 third-party origins could be preconnected to save 200-400ms on initial connection time.",
+      "savings": { "bytes": 0, "wastedMs": 380 },
+      "details": { "overallSavingsBytes": 0, "overallSavingsMs": 380, "resourceCount": 3 }
+    },
+    {
+      "id": "opp-002",
+      "title": "Reduce unused CSS",
+      "description": "2 stylesheets contain 45KB of unused selectors that could be removed.",
+      "savings": { "bytes": 45000, "wastedMs": 120 },
+      "details": { "overallSavingsBytes": 45000, "overallSavingsMs": 120, "resourceCount": 2 }
+    },
+    {
+      "id": "opp-003",
+      "title": "Use video formats for animated content",
+      "description": "2 animated GIFs could be converted to WebM or MP4 video for 60-80% size reduction.",
+      "savings": { "bytes": 320000, "wastedMs": 280 },
+      "details": { "overallSavingsBytes": 320000, "overallSavingsMs": 280, "resourceCount": 2 }
+    }
+  ],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 1650000,
+    "totalTransferSize": 1280000,
+    "domSize": 2100,
+    "renderBlockingResources": 3,
+    "thirdPartySummary": { "transferSize": 420000, "blockingTime": 180, "entityCount": 6 }
+  }
+}

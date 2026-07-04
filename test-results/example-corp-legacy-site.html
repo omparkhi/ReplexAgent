@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example Corp Legacy Site</title>
+<style>
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a1a2e; background: #f8f9fa; }
+      .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+      .report-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid #0f3460; }
+      .report-header h1 { font-size: 2rem; color: #0f3460; margin-bottom: 0.5rem; }
+      .meta { display: flex; gap: 2rem; justify-content: center; color: #666; font-size: 0.9rem; }
+      .report-section { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+      .report-section h2 { color: #0f3460; font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e94560; }
+      .report-section h3 { color: #16213e; margin: 1.2rem 0 0.6rem; font-size: 1.1rem; }
+      .report-section h4 { color: #0f3460; margin: 1rem 0 0.4rem; }
+      .overview { color: #444; margin-bottom: 1rem; }
+      .risk-card { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+      .risk-label { font-size: 0.8rem; text-transform: uppercase; color: #856404; letter-spacing: 0.05em; }
+      .risk-value { font-size: 1.2rem; font-weight: 600; color: #856404; }
+      .stats-row { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .stat { text-align: center; flex: 1; padding: 0.8rem; background: #f1f3f5; border-radius: 6px; }
+      .stat-value { display: block; font-size: 1.3rem; font-weight: 700; color: #0f3460; }
+      .stat-label { display: block; font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+      .top-action { padding: 0.8rem; background: #e8f4f8; border-radius: 4px; margin: 1rem 0; }
+      .data-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+      .data-table th, .data-table td { padding: 0.5rem 0.8rem; text-align: left; border-bottom: 1px solid #e9ecef; }
+      .data-table th { background: #f1f3f5; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+      .severity-badge, .impact-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; font-weight: 600; }
+      .severity-badge.critical, .impact-badge.critical { background: #dc3545; color: #fff; }
+      .severity-badge.high, .impact-badge.high { background: #fd7e14; color: #fff; }
+      .severity-badge.medium, .impact-badge.medium { background: #ffc107; color: #212529; }
+      .severity-badge.low, .impact-badge.low { background: #28a745; color: #fff; }
+      .severity-badge.info { background: #17a2b8; color: #fff; }
+      .severity-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+      .finding-group { margin: 1rem 0; padding: 0.8rem; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #0f3460; }
+      .finding-group h4 { margin-bottom: 0.5rem; }
+      .count { font-weight: normal; color: #666; font-size: 0.85rem; }
+      .findings-list { list-style: none; padding: 0; }
+      .finding-item { padding: 0.4rem 0; border-bottom: 1px solid #e9ecef; }
+      .finding-title { font-weight: 600; }
+      .recommendation { color: #555; font-size: 0.9rem; }
+      .quick-wins { margin: 0.5rem 0; }
+      .quick-wins li { padding: 0.3rem 0; color: #28a745; }
+      .financials { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .effort-badge { display: inline-block; padding: 0.1rem 0.4rem; background: #e9ecef; border-radius: 3px; font-size: 0.8rem; margin-left: 0.5rem; }
+      .roadmap-phase { margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #e94560; }
+      .phase-meta { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .timeframe { font-weight: 600; color: #0f3460; }
+      .phase-hours { font-weight: 600; color: #e94560; margin-bottom: 0.5rem; }
+      .phase-items { list-style: none; padding: 0; }
+      .roadmap-item { padding: 0.6rem 0; border-bottom: 1px solid #e9ecef; }
+      .roadmap-item p { margin: 0.3rem 0 0; color: #555; font-size: 0.9rem; }
+      .steps { margin: 0.3rem 0 0 1rem; font-size: 0.85rem; color: #666; }
+      .confidence-badge { margin: 1rem 0; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem; }
+      .confidence-badge.high { background: #d4edda; border-left: 4px solid #28a745; }
+      .confidence-badge.medium { background: #fff3cd; border-left: 4px solid #ffc107; }
+      .confidence-badge.low { background: #f8d7da; border-left: 4px solid #dc3545; }
+      .confidence-badge .label { font-weight: 600; display: block; }
+      .confidence-badge .score { font-size: 1.1rem; font-weight: 700; }
+      .confidence-badge .rationale { display: block; color: #555; margin-top: 0.3rem; }
+      .excluded { margin-top: 0.5rem; }
+      .excluded ul { margin: 0.3rem 0 0 1rem; font-size: 0.8rem; color: #888; }
+      .report-footer { text-align: center; padding: 1.5rem; color: #666; font-size: 0.85rem; border-top: 2px solid #e9ecef; margin-top: 1rem; }
+      .confidence-footer { font-style: italic; margin-top: 0.3rem; }
+      @media print { .container { max-width: 100%; padding: 1rem; } .report-section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+      @media (max-width: 600px) { .container { padding: 1rem; } .stats-row, .financials { flex-direction: column; } .meta { flex-direction: column; gap: 0.3rem; } }
+    
+</style>
+</head>
+<body>
+<div class="container">
+
+      <header class="report-header">
+        <h1>Example Corp Legacy Site</h1>
+        <div class="meta">
+          <span><strong>URL:</strong> https://old.example-corp.com</span>
+          <span><strong>Generated:</strong> 2026-07-04T12:14:46.597Z</span>
+        </div>
+      </header>
+
+      <div class="confidence-badge high">
+        <span class="label">Overall Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">Overall confidence across 5 sections. 131 total data points verified.</span>
+        
+      </div>
+
+      <section class="report-section executive">
+        <h2>Executive Summary</h2>
+        <p class="overview">Audit of https://old.example-corp.com identified 18 findings across 5 categories. 13 require immediate attention. Estimated total remediation effort: 167 hours.</p>
+        <div class="risk-card">
+          <div class="risk-label">Overall Risk</div>
+          <div class="risk-value">CRITICAL — Immediate action required</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">18</span><span class="stat-label">Total Findings</span></div>
+          <div class="stat"><span class="stat-value">1-2 months</span><span class="stat-label">Timeline</span></div>
+        </div>
+        <div class="top-action">
+          <strong>Top Action:</strong> Address &quot;Largest Contentful Paint (LCP) exceeds 4s&quot; (The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.)
+        </div>
+        <h3>By Severity</h3>
+        <div class="severity-badges"><span class="severity-badge critical">Critical: 5</span> <span class="severity-badge high">High: 8</span> <span class="severity-badge medium">Medium: 5</span></div>
+        <h3>By Category</h3>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Count</th></tr></thead>
+          <tbody><tr><td>SEO</td><td>3</td></tr><tr><td>Accessibility</td><td>4</td></tr><tr><td>Performance</td><td>6</td></tr><tr><td>Security</td><td>3</td></tr><tr><td>Best Practice</td><td>2</td></tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">5 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section developer">
+        <h2>Developer Report</h2>
+        <p class="overview">18 findings grouped into 6 categories. Total estimated effort: 167 hours.</p>
+        <h3>Technical Debt</h3>
+        <p>Significant technical debt detected. 3 issues require complex refactoring (~56 hours).</p>
+        <h3>Quick Wins</h3>
+        <ul class="quick-wins"><li>Document does not have a meta description: Add unique meta descriptions to all pages.</li><li>Uses HTTP/1.1 for some resources: Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.</li><li>Browser errors logged to the console: Fix all console errors. Implement error monitoring with Sentry or similar.</li></ul>
+        <h3>Finding Groups</h3>
+        
+        <div class="finding-group">
+          <h4>Performance — Performance <span class="count">(6 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Largest Contentful Paint (LCP) exceeds 4s</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.</span></li><li class="finding-item"><span class="finding-title">Total Blocking Time (TBT) exceeds 200ms</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.</span></li><li class="finding-item"><span class="finding-title">Cumulative Layout Shift (CLS) exceeds 0.1</span> <span class="severity-badge high">High</span><br><span class="recommendation">Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.</span></li><li class="finding-item"><span class="finding-title">Server response time (TTFB) exceeds 600ms</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.</span></li><li class="finding-item"><span class="finding-title">Eliminate render-blocking resources</span> <span class="severity-badge high">High</span><br><span class="recommendation">Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.</span></li><li class="finding-item"><span class="finding-title">Unused CSS rules</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Content <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Form elements do not have associated labels</span> <span class="severity-badge high">High</span><br><span class="recommendation">Associate each form input with a &lt;label&gt; element using the for attribute or by wrapping the input in the label.</span></li><li class="finding-item"><span class="finding-title">Image elements do not have [alt] attributes</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">Add descriptive alt text to all informational images. Use alt='' for decorative images.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Security — Technical <span class="count">(3 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Missing X-Content-Type-Options header</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add X-Content-Type-Options: nosniff header to all responses.</span></li><li class="finding-item"><span class="finding-title">Mixed content detected</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.</span></li><li class="finding-item"><span class="finding-title">CSP header is missing</span> <span class="severity-badge high">High</span><br><span class="recommendation">Implement a strict Content-Security-Policy header.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Technical <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Missing document language</span> <span class="severity-badge high">High</span><br><span class="recommendation">Add lang='en' (or appropriate language code) to the &lt;html&gt; element.</span></li><li class="finding-item"><span class="finding-title">Elements with ARIA roles do not have required ARIA attributes</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add required ARIA attributes to all elements with explicit roles.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>SEO — Metadata <span class="count">(3 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Document does not have a meta description</span> <span class="severity-badge high">High</span><br><span class="recommendation">Add unique meta descriptions to all pages.</span></li><li class="finding-item"><span class="finding-title">Page does not have a valid hreflang</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Ensure all hreflang links are bidirectional and point to valid URLs.</span></li><li class="finding-item"><span class="finding-title">Document does not have a valid rel=canonical</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add a rel=canonical tag pointing to the preferred URL for each page.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Best Practice — Technical <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Uses HTTP/1.1 for some resources</span> <span class="severity-badge high">High</span><br><span class="recommendation">Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.</span></li><li class="finding-item"><span class="finding-title">Browser errors logged to the console</span> <span class="severity-badge high">High</span><br><span class="recommendation">Fix all console errors. Implement error monitoring with Sentry or similar.</span></li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">8 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section business">
+        <h2>Business Summary</h2>
+        <p class="overview">Total estimated effort: 166.9 hours ($25,035 at $150/hr). 18 findings with business impact assessments.</p>
+        <div class="financials">
+          <div class="stat"><span class="stat-value">166.9h</span><span class="stat-label">Total Effort</span></div>
+          <div class="stat"><span class="stat-value">$25,035</span><span class="stat-label">Estimated Cost</span></div>
+        </div>
+        <h3>ROI</h3>
+        <p>Addressing 13 high-impact issues first will reduce critical risk exposure. Estimated investment: $25,035 for 166.9 hours of work.</p>
+        <h3>Impact Summary</h3>
+        <table class="data-table">
+          <thead><tr><th>Finding</th><th>Impact</th><th>Effort</th><th>Hours</th><th>Priority</th></tr></thead>
+          <tbody><tr>
+        <td>Largest Contentful Paint (LCP) exceeds 4s</td>
+        <td><span class="impact-badge critical">Critical</span></td>
+        <td>Moderate</td>
+        <td>10.4h</td>
+        <td>80.0</td>
+      </tr><tr>
+        <td>Total Blocking Time (TBT) exceeds 200ms</td>
+        <td><span class="impact-badge critical">Critical</span></td>
+        <td>Moderate</td>
+        <td>10.4h</td>
+        <td>80.0</td>
+      </tr><tr>
+        <td>Server response time (TTFB) exceeds 600ms</td>
+        <td><span class="impact-badge critical">Critical</span></td>
+        <td>Moderate</td>
+        <td>10.4h</td>
+        <td>80.0</td>
+      </tr><tr>
+        <td>Document does not have a meta description</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Easy</td>
+        <td>3.6h</td>
+        <td>78.0</td>
+      </tr><tr>
+        <td>Uses HTTP/1.1 for some resources</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Easy</td>
+        <td>4.5h</td>
+        <td>78.0</td>
+      </tr><tr>
+        <td>Browser errors logged to the console</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Easy</td>
+        <td>4.5h</td>
+        <td>78.0</td>
+      </tr><tr>
+        <td>Image elements do not have [alt] attributes</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>12h</td>
+        <td>70.0</td>
+      </tr><tr>
+        <td>Cumulative Layout Shift (CLS) exceeds 0.1</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>7.8h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Eliminate render-blocking resources</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>7.8h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Form elements do not have associated labels</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>9h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Mixed content detected</td>
+        <td><span class="impact-badge critical">Critical</span></td>
+        <td>Difficult</td>
+        <td>24h</td>
+        <td>56.0</td>
+      </tr><tr>
+        <td>Page does not have a valid hreflang</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Easy</td>
+        <td>2.4h</td>
+        <td>52.0</td>
+      </tr><tr>
+        <td>Document does not have a valid rel=canonical</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Easy</td>
+        <td>2.4h</td>
+        <td>52.0</td>
+      </tr><tr>
+        <td>Missing document language</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Difficult</td>
+        <td>13.5h</td>
+        <td>42.0</td>
+      </tr><tr>
+        <td>CSP header is missing</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Difficult</td>
+        <td>18h</td>
+        <td>42.0</td>
+      </tr><tr>
+        <td>Unused CSS rules</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Elements with ARIA roles do not have required ARIA attributes</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>9h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Missing X-Content-Type-Options header</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>12h</td>
+        <td>40.0</td>
+      </tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">36 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section roadmap">
+        <h2>Implementation Roadmap</h2>
+        <p class="overview">3 phases planned over 2-3 months. Total effort: 166.9 hours.</p>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">166.9h</span><span class="stat-label">Total Hours</span></div>
+          <div class="stat"><span class="stat-value">2-3 months</span><span class="stat-label">Timeline</span></div>
+        </div>
+        
+        <div class="roadmap-phase">
+          <h4>Phase 1: Critical Fixes</h4>
+          <div class="phase-meta"><span class="timeframe">1-3 days</span> — Address all critical severity issues immediately</div>
+          <div class="phase-hours">67.2 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Largest Contentful Paint (LCP) exceeds 4s</strong>
+            <span class="effort-badge">Moderate — 10.4h</span>
+            <p>The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Total Blocking Time (TBT) exceeds 200ms</strong>
+            <span class="effort-badge">Moderate — 10.4h</span>
+            <p>Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Server response time (TTFB) exceeds 600ms</strong>
+            <span class="effort-badge">Moderate — 10.4h</span>
+            <p>Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Image elements do not have [alt] attributes</strong>
+            <span class="effort-badge">Moderate — 12h</span>
+            <p>Add descriptive alt text to all informational images. Use alt='' for decorative images.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Add descriptive alt text to all informational images. Use alt='' for decorative images.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Mixed content detected</strong>
+            <span class="effort-badge">Difficult — 24h</span>
+            <p>Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 2: High Priority</h4>
+          <div class="phase-meta"><span class="timeframe">1-2 weeks</span> — Resolve high severity issues</div>
+          <div class="phase-hours">68.7 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Document does not have a meta description</strong>
+            <span class="effort-badge">Easy — 3.6h</span>
+            <p>Add unique meta descriptions to all pages.</p>
+            <ul class="steps"><li>Identify affected metadata in codebase</li><li>Apply fix: Add unique meta descriptions to all pages.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Uses HTTP/1.1 for some resources</strong>
+            <span class="effort-badge">Easy — 4.5h</span>
+            <p>Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Browser errors logged to the console</strong>
+            <span class="effort-badge">Easy — 4.5h</span>
+            <p>Fix all console errors. Implement error monitoring with Sentry or similar.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Fix all console errors. Implement error monitoring with Sentry or similar.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Cumulative Layout Shift (CLS) exceeds 0.1</strong>
+            <span class="effort-badge">Moderate — 7.8h</span>
+            <p>Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Eliminate render-blocking resources</strong>
+            <span class="effort-badge">Moderate — 7.8h</span>
+            <p>Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Form elements do not have associated labels</strong>
+            <span class="effort-badge">Moderate — 9h</span>
+            <p>Associate each form input with a &lt;label&gt; element using the for attribute or by wrapping the input in the label.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Associate each form input with a &lt;label&gt; element using the for attribute or by wrapping the input in the label.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Missing document language</strong>
+            <span class="effort-badge">Difficult — 13.5h</span>
+            <p>Add lang='en' (or appropriate language code) to the &lt;html&gt; element.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Add lang='en' (or appropriate language code) to the &lt;html&gt; element.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>CSP header is missing</strong>
+            <span class="effort-badge">Difficult — 18h</span>
+            <p>Implement a strict Content-Security-Policy header.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Implement a strict Content-Security-Policy header.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 3: Medium Priority</h4>
+          <div class="phase-meta"><span class="timeframe">2-4 weeks</span> — Address moderate severity improvements</div>
+          <div class="phase-hours">31 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Page does not have a valid hreflang</strong>
+            <span class="effort-badge">Easy — 2.4h</span>
+            <p>Ensure all hreflang links are bidirectional and point to valid URLs.</p>
+            <ul class="steps"><li>Identify affected metadata in codebase</li><li>Apply fix: Ensure all hreflang links are bidirectional and point to valid URLs.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Document does not have a valid rel=canonical</strong>
+            <span class="effort-badge">Easy — 2.4h</span>
+            <p>Add a rel=canonical tag pointing to the preferred URL for each page.</p>
+            <ul class="steps"><li>Identify affected metadata in codebase</li><li>Apply fix: Add a rel=canonical tag pointing to the preferred URL for each page.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Unused CSS rules</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Elements with ARIA roles do not have required ARIA attributes</strong>
+            <span class="effort-badge">Moderate — 9h</span>
+            <p>Add required ARIA attributes to all elements with explicit roles.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Add required ARIA attributes to all elements with explicit roles.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Missing X-Content-Type-Options header</strong>
+            <span class="effort-badge">Moderate — 12h</span>
+            <p>Add X-Content-Type-Options: nosniff header to all responses.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Add X-Content-Type-Options: nosniff header to all responses.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">18 data points verified</span>
+        
+      </div>
+      </section>
+
+      <footer class="report-footer">
+        <p>Report generated by ReplexAgent Report Agent</p>
+        <p class="confidence-footer">Confidence: 100% — Overall confidence across 5 sections. 131 total data points verified.</p>
+      </footer>
+</div>
+</body>
+</html>

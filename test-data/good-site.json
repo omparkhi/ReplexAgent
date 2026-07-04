@@ -1,0 +1,46 @@
+{
+  "url": "https://developer.chrome.com",
+  "title": "Chrome Developers",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T10:00:00Z",
+  "scores": {
+    "performance": 96,
+    "accessibility": 100,
+    "seo": 100,
+    "bestPractices": 100
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 420, "unit": "ms", "score": 1 },
+    "largestContentfulPaint": { "value": 890, "unit": "ms", "score": 1 },
+    "totalBlockingTime": { "value": 10, "unit": "ms", "score": 1 },
+    "cumulativeLayoutShift": { "value": 0.01, "unit": "score", "score": 1 },
+    "speedIndex": { "value": 680, "unit": "ms", "score": 1 },
+    "interactive": { "value": 1050, "unit": "ms", "score": 1 },
+    "serverResponseTime": { "value": 80, "unit": "ms", "score": 1 }
+  },
+  "findings": [
+    {
+      "id": "a11y-001",
+      "title": "Image elements have alternate text",
+      "description": "When an image does not have alt text, screen readers announce the image as an empty image. This makes it impossible for screen reader users to understand the image's purpose.",
+      "severity": "low",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:image-alt",
+      "recommendation": "Add descriptive alt text to all images. Use alt='' for decorative images.",
+      "metadata": { "element": "img[data-test-id='hero-image']", "wcagLevel": "A" }
+    }
+  ],
+  "opportunities": [],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 485000,
+    "totalTransferSize": 412000,
+    "domSize": 1250,
+    "renderBlockingResources": 0,
+    "thirdPartySummary": { "transferSize": 85000, "blockingTime": 0, "entityCount": 3 }
+  }
+}

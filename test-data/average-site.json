@@ -1,0 +1,145 @@
+{
+  "url": "https://www.bbc.com",
+  "title": "BBC",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T10:15:00Z",
+  "scores": {
+    "performance": 52,
+    "accessibility": 88,
+    "seo": 82,
+    "bestPractices": 79
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 1800, "unit": "ms", "score": 0.6 },
+    "largestContentfulPaint": { "value": 4200, "unit": "ms", "score": 0.3 },
+    "totalBlockingTime": { "value": 580, "unit": "ms", "score": 0.4 },
+    "cumulativeLayoutShift": { "value": 0.12, "unit": "score", "score": 0.7 },
+    "speedIndex": { "value": 3500, "unit": "ms", "score": 0.4 },
+    "interactive": { "value": 5100, "unit": "ms", "score": 0.3 },
+    "serverResponseTime": { "value": 320, "unit": "ms", "score": 0.7 }
+  },
+  "findings": [
+    {
+      "id": "perf-001",
+      "title": "Largest Contentful Paint (LCP) exceeds 2.5s",
+      "description": "LCP of 4200ms is classified as 'poor' by Core Web Vitals. The main content takes too long to become visible to users.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:largest-contentful-paint-element",
+      "recommendation": "Optimize the hero image with modern formats (WebP/AVIF), implement preload hints, and reduce server response time.",
+      "metadata": { "metric": "LCP", "value": 4200, "target": 2500, "cwe": "CWE-665" }
+    },
+    {
+      "id": "perf-002",
+      "title": "Total Blocking Time (TBT) exceeds 200ms",
+      "description": "TBT of 580ms indicates the main thread is blocked for extended periods, preventing user interaction.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:mainthread-work-breakdown",
+      "recommendation": "Break up long tasks, defer non-critical JavaScript, and use web workers for heavy computation.",
+      "metadata": { "metric": "TBT", "value": 580, "target": 200 }
+    },
+    {
+      "id": "perf-003",
+      "title": "Eliminate render-blocking resources",
+      "description": "3 stylesheets and 2 scripts block page rendering. These resources must be downloaded and processed before the page can be painted.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:render-blocking-resources",
+      "recommendation": "Inline critical CSS, defer non-critical stylesheets, and add async/defer attributes to scripts.",
+      "metadata": { "wastedMs": 1200, "resources": ["css/main.css", "css/vendor.css", "js/analytics.js"] }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Background and foreground colors do not have sufficient contrast ratio",
+      "description": "Some text elements have a contrast ratio below the WCAG AA minimum of 4.5:1, making them difficult to read for users with low vision.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:color-contrast",
+      "recommendation": "Increase color contrast to meet WCAG AA (4.5:1 for normal text).",
+      "metadata": { "element": ".article-meta", "contrastRatio": 3.2, "target": 4.5, "wcagLevel": "AA" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Document does not have a meta description",
+      "description": "Meta descriptions are used by search engines to generate snippets. Missing descriptions reduce click-through rates from search results.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:meta-description",
+      "recommendation": "Add a unique, compelling meta description (120-160 characters) to each page.",
+      "metadata": { "wcagLevel": "A" }
+    },
+    {
+      "id": "seo-002",
+      "title": "Links do not have a discernible name",
+      "description": "3 links are missing accessible names, making them impossible for screen reader users to identify.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:link-name",
+      "recommendation": "Add text content, aria-label, or aria-labelledby to all links.",
+      "metadata": { "elementCount": 3, "wcagLevel": "A" }
+    },
+    {
+      "id": "bp-001",
+      "title": "Uses deprecated APIs",
+      "description": "Page calls 2 deprecated JavaScript APIs that will be removed in future browser versions.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:deprecations",
+      "recommendation": "Replace deprecated APIs with modern equivalents. Check browser compatibility before removing fallbacks.",
+      "metadata": { "apis": ["document.domain", "Range.selectNode"] }
+    },
+    {
+      "id": "bp-002",
+      "title": "Missing CSP header",
+      "description": "Content Security Policy header is not set, leaving the site vulnerable to XSS attacks.",
+      "severity": "high",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:csp-xss",
+      "recommendation": "Implement a Content-Security-Policy header with appropriate directives.",
+      "metadata": { "cwe": "CWE-79", "cvss": 6.1 }
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Serve images in next-gen formats",
+      "description": "Image formats like WebP and AVIF often provide better compression than PNG or JPEG, resulting in faster downloads.",
+      "savings": { "bytes": 245000, "wastedMs": 800 },
+      "details": { "overallSavingsBytes": 245000, "overallSavingsMs": 800, "resourceCount": 12 }
+    },
+    {
+      "id": "opp-002",
+      "title": "Enable text compression",
+      "description": "Text-based resources should be served with gzip or Brotli compression to reduce transfer size.",
+      "savings": { "bytes": 89000, "wastedMs": 150 },
+      "details": { "overallSavingsBytes": 89000, "overallSavingsMs": 150, "resourceCount": 8 }
+    },
+    {
+      "id": "opp-003",
+      "title": "Reduce unused JavaScript",
+      "description": "3 JavaScript bundles contain unused code that can be tree-shaken or code-split.",
+      "savings": { "bytes": 120000, "wastedMs": 350 },
+      "details": { "overallSavingsBytes": 120000, "overallSavingsMs": 350, "resourceCount": 3 }
+    }
+  ],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 2850000,
+    "totalTransferSize": 2120000,
+    "domSize": 3200,
+    "renderBlockingResources": 5,
+    "thirdPartySummary": { "transferSize": 890000, "blockingTime": 420, "entityCount": 12 }
+  }
+}

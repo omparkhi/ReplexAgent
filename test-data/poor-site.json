@@ -1,0 +1,276 @@
+{
+  "url": "https://old.example-corp.com",
+  "title": "Example Corp Legacy Site",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T10:30:00Z",
+  "scores": {
+    "performance": 18,
+    "accessibility": 42,
+    "seo": 35,
+    "bestPractices": 29
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 6200, "unit": "ms", "score": 0.05 },
+    "largestContentfulPaint": { "value": 12800, "unit": "ms", "score": 0.02 },
+    "totalBlockingTime": { "value": 2400, "unit": "ms", "score": 0.02 },
+    "cumulativeLayoutShift": { "value": 0.45, "unit": "score", "score": 0.1 },
+    "speedIndex": { "value": 9500, "unit": "ms", "score": 0.05 },
+    "interactive": { "value": 14200, "unit": "ms", "score": 0.02 },
+    "serverResponseTime": { "value": 2800, "unit": "ms", "score": 0.01 }
+  },
+  "findings": [
+    {
+      "id": "perf-001",
+      "title": "Largest Contentful Paint (LCP) exceeds 4s",
+      "description": "LCP of 12800ms is extremely poor. Users wait over 12 seconds before the main content becomes visible.",
+      "severity": "critical",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:largest-contentful-paint-element",
+      "recommendation": "The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.",
+      "metadata": { "metric": "LCP", "value": 12800, "target": 2500, "element": "img.hero-banner", "elementSize": "4.2MB" }
+    },
+    {
+      "id": "perf-002",
+      "title": "Total Blocking Time (TBT) exceeds 200ms",
+      "description": "TBT of 2400ms means the page is completely unresponsive for over 2 seconds during load.",
+      "severity": "critical",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:mainthread-work-breakdown",
+      "recommendation": "Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.",
+      "metadata": { "metric": "TBT", "value": 2400, "target": 200, "breakdown": { "scriptEvaluation": 1800, "styleCalculation": 400, "layout": 200 } }
+    },
+    {
+      "id": "perf-003",
+      "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+      "description": "CLS of 0.45 causes significant visual instability. Elements shift positions during page load, leading to accidental clicks.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:cumulative-layout-shift",
+      "recommendation": "Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.",
+      "metadata": { "metric": "CLS", "value": 0.45, "target": 0.1, "worstShift": "ad-banner-loading" }
+    },
+    {
+      "id": "perf-004",
+      "title": "Server response time (TTFB) exceeds 600ms",
+      "description": "TTFB of 2800ms indicates the server takes nearly 3 seconds to begin sending data. This delays all subsequent processing.",
+      "severity": "critical",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:server-response-time",
+      "recommendation": "Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.",
+      "metadata": { "metric": "TTFB", "value": 2800, "target": 600, "hosting": "shared" }
+    },
+    {
+      "id": "perf-005",
+      "title": "Eliminate render-blocking resources",
+      "description": "8 stylesheets and 6 scripts block page rendering, adding over 4 seconds to the initial paint.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:render-blocking-resources",
+      "recommendation": "Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.",
+      "metadata": { "wastedMs": 4200, "resourceCount": 14 }
+    },
+    {
+      "id": "perf-006",
+      "title": "Unused CSS rules",
+      "description": "5 stylesheets contain over 200KB of unused CSS selectors.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:unused-css-rules",
+      "recommendation": "Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.",
+      "metadata": { "wastedBytes": 215000, "wastedPercent": 68 }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Missing document language",
+      "description": "The <html> element does not have a lang attribute, making it impossible for screen readers to determine the correct pronunciation.",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:html-has-lang",
+      "recommendation": "Add lang='en' (or appropriate language code) to the <html> element.",
+      "metadata": { "wcagLevel": "A", "cwe": "CWE-347" }
+    },
+    {
+      "id": "a11y-002",
+      "title": "Form elements do not have associated labels",
+      "description": "7 form inputs lack labels, making them unusable for screen reader users and difficult for all users to understand.",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:label",
+      "recommendation": "Associate each form input with a <label> element using the for attribute or by wrapping the input in the label.",
+      "metadata": { "elementCount": 7, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-003",
+      "title": "Image elements do not have [alt] attributes",
+      "description": "23 images are missing alt attributes entirely, making them invisible to screen readers.",
+      "severity": "critical",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:image-alt",
+      "recommendation": "Add descriptive alt text to all informational images. Use alt='' for decorative images.",
+      "metadata": { "elementCount": 23, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-004",
+      "title": "Elements with ARIA roles do not have required ARIA attributes",
+      "description": "5 interactive elements with ARIA roles are missing required attributes (aria-expanded, aria-controls).",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:aria-required-attr",
+      "recommendation": "Add required ARIA attributes to all elements with explicit roles.",
+      "metadata": { "elementCount": 5, "wcagLevel": "A" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Document does not have a meta description",
+      "description": "No meta description is provided, causing search engines to auto-generate snippets from page content.",
+      "severity": "high",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:meta-description",
+      "recommendation": "Add unique meta descriptions to all pages.",
+      "metadata": { "wcagLevel": "A" }
+    },
+    {
+      "id": "seo-002",
+      "title": "Page does not have a valid hreflang",
+      "description": "The site declares hreflang tags for 3 languages but the return links are missing or incorrect.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:hreflang",
+      "recommendation": "Ensure all hreflang links are bidirectional and point to valid URLs.",
+      "metadata": { "invalidLinks": ["fr", "de", "es"] }
+    },
+    {
+      "id": "seo-003",
+      "title": "Document does not have a valid rel=canonical",
+      "description": "No canonical tag is specified, risking duplicate content issues across URL variations.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:canonical",
+      "recommendation": "Add a rel=canonical tag pointing to the preferred URL for each page.",
+      "metadata": {}
+    },
+    {
+      "id": "bp-001",
+      "title": "Uses HTTP/1.1 for some resources",
+      "description": "18 resources are served over HTTP/1.1 instead of HTTP/2, preventing multiplexing and header compression.",
+      "severity": "high",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:protocol",
+      "recommendation": "Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.",
+      "metadata": { "resourceCount": 18, "protocol": "HTTP/1.1" }
+    },
+    {
+      "id": "bp-002",
+      "title": "Browser errors logged to the console",
+      "description": "8 JavaScript errors are logged to the browser console, indicating broken functionality.",
+      "severity": "high",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:errors-in-console",
+      "recommendation": "Fix all console errors. Implement error monitoring with Sentry or similar.",
+      "metadata": { "errorCount": 8, "errors": ["TypeError: Cannot read property 'addEventListener' of null", "ReferenceError: $ is not defined"] }
+    },
+    {
+      "id": "bp-003",
+      "title": "Missing X-Content-Type-Options header",
+      "description": "The X-Content-Type-Options header is not set, allowing browsers to MIME-sniff responses.",
+      "severity": "medium",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:x-content-type-options",
+      "recommendation": "Add X-Content-Type-Options: nosniff header to all responses.",
+      "metadata": { "cwe": "CWE-693" }
+    },
+    {
+      "id": "bp-004",
+      "title": "Mixed content detected",
+      "description": "Page loads 5 resources over HTTP while served over HTTPS. Browsers may block these resources.",
+      "severity": "critical",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:mixed-content",
+      "recommendation": "Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.",
+      "metadata": { "resourceCount": 5, "resources": ["http://cdn.example-corp.com/jquery.min.js", "http://cdn.example-corp.com/bootstrap.css"] }
+    },
+    {
+      "id": "bp-005",
+      "title": "CSP header is missing",
+      "description": "No Content-Security-Policy header is set, leaving the site vulnerable to XSS and data injection attacks.",
+      "severity": "high",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:csp-xss",
+      "recommendation": "Implement a strict Content-Security-Policy header.",
+      "metadata": { "cwe": "CWE-79", "cvss": 7.5 }
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Properly size images",
+      "description": "Images are larger than their display dimensions. Serving appropriately sized images can reduce load time.",
+      "savings": { "bytes": 1850000, "wastedMs": 3200 },
+      "details": { "overallSavingsBytes": 1850000, "overallSavingsMs": 3200, "resourceCount": 6 }
+    },
+    {
+      "id": "opp-002",
+      "title": "Serve images in next-gen formats",
+      "description": "PNG and JPEG images can be converted to WebP or AVIF for 30-50% size reduction.",
+      "savings": { "bytes": 920000, "wastedMs": 1800 },
+      "details": { "overallSavingsBytes": 920000, "overallSavingsMs": 1800, "resourceCount": 8 }
+    },
+    {
+      "id": "opp-003",
+      "title": "Enable text compression",
+      "description": "Text resources are served uncompressed, adding unnecessary transfer size.",
+      "savings": { "bytes": 340000, "wastedMs": 600 },
+      "details": { "overallSavingsBytes": 340000, "overallSavingsMs": 600, "resourceCount": 15 }
+    },
+    {
+      "id": "opp-004",
+      "title": "Reduce unused JavaScript",
+      "description": "4 JavaScript bundles contain over 500KB of unused code.",
+      "savings": { "bytes": 520000, "wastedMs": 1200 },
+      "details": { "overallSavingsBytes": 520000, "overallSavingsMs": 1200, "resourceCount": 4 }
+    },
+    {
+      "id": "opp-005",
+      "title": "Defer offscreen images",
+      "description": "12 images below the fold load eagerly, blocking more critical resources.",
+      "savings": { "bytes": 680000, "wastedMs": 900 },
+      "details": { "overallSavingsBytes": 680000, "overallSavingsMs": 900, "resourceCount": 12 }
+    },
+    {
+      "id": "opp-006",
+      "title": "Reduce the impact of third-party code",
+      "description": "Third-party scripts block the main thread for 1.2 seconds and transfer 1.8MB.",
+      "savings": { "bytes": 1800000, "wastedMs": 1200 },
+      "details": { "overallSavingsBytes": 1800000, "overallSavingsMs": 1200, "entityCount": 8 }
+    }
+  ],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 8950000,
+    "totalTransferSize": 7200000,
+    "domSize": 5800,
+    "renderBlockingResources": 14,
+    "thirdPartySummary": { "transferSize": 1850000, "blockingTime": 1200, "entityCount": 8 }
+  }
+}

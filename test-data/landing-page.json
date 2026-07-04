@@ -1,0 +1,127 @@
+{
+  "url": "https://stripe.com",
+  "title": "Stripe — Financial infrastructure for the internet",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T12:00:00Z",
+  "scores": {
+    "performance": 82,
+    "accessibility": 95,
+    "seo": 97,
+    "bestPractices": 92
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 800, "unit": "ms", "score": 0.9 },
+    "largestContentfulPaint": { "value": 1900, "unit": "ms", "score": 0.8 },
+    "totalBlockingTime": { "value": 120, "unit": "ms", "score": 0.8 },
+    "cumulativeLayoutShift": { "value": 0.03, "unit": "score", "score": 0.95 },
+    "speedIndex": { "value": 1500, "unit": "ms", "score": 0.8 },
+    "interactive": { "value": 2100, "unit": "ms", "score": 0.7 },
+    "serverResponseTime": { "value": 120, "unit": "ms", "score": 0.9 }
+  },
+  "findings": [
+    {
+      "id": "perf-001",
+      "title": "Largest Contentful Paint (LCP) could be faster",
+      "description": "LCP of 1900ms is in the 'good' range but could be improved. The hero animation delays content visibility.",
+      "severity": "low",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:largest-contentful-paint-element",
+      "recommendation": "Consider making the hero animation optional or reducing its duration for faster content display.",
+      "metadata": { "metric": "LCP", "value": 1900, "target": 2500, "element": ".hero-content" }
+    },
+    {
+      "id": "perf-002",
+      "title": "Reduce unused JavaScript",
+      "description": "Marketing scripts and A/B testing tools contain 85KB of unused code.",
+      "severity": "low",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:unused-javascript",
+      "recommendation": "Code-split marketing scripts and load A/B testing tools on demand.",
+      "metadata": { "wastedBytes": 85000, "resourceCount": 3 }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Interactive elements not keyboard accessible",
+      "description": "2 custom dropdown menus in the navigation are not reachable via keyboard navigation.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:keyboard-accessibility",
+      "recommendation": "Add tabindex='0' and keyboard event handlers to custom interactive elements.",
+      "metadata": { "elementCount": 2, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-002",
+      "title": "Focus indicators missing on some interactive elements",
+      "description": "The CTA button and form inputs lack visible focus indicators, making keyboard navigation difficult.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:focus-traps",
+      "recommendation": "Add visible focus styles (:focus-visible) to all interactive elements.",
+      "metadata": { "elementCount": 4, "wcagLevel": "2.4.7" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Social media meta tags incomplete",
+      "description": "Open Graph image and Twitter Card tags are missing, reducing social media sharing quality.",
+      "severity": "low",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:og-meta",
+      "recommendation": "Add og:image, og:image:width, og:image:height, and twitter:card meta tags.",
+      "metadata": { "missingTags": ["og:image", "twitter:card", "twitter:image"] }
+    },
+    {
+      "id": "bp-001",
+      "title": "Missing Permissions-Policy header",
+      "description": "No Permissions-Policy header is set. The page includes an embedded demo that could access camera/microphone.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:permissions-policy",
+      "recommendation": "Set Permissions-Policy to restrict unused features: camera=(), microphone=(), geolocation=().",
+      "metadata": {}
+    },
+    {
+      "id": "bp-002",
+      "title": "Subresource Integrity (SRI) missing",
+      "description": "3 third-party scripts load without SRI hashes, increasing supply chain attack risk.",
+      "severity": "low",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:sri",
+      "recommendation": "Add integrity and crossorigin attributes to all third-party script tags.",
+      "metadata": { "resourceCount": 3, "cwe": "CWE-353" }
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Preconnect to third-party origins",
+      "description": "2 analytics origins could benefit from preconnection to save 150ms on initial connection.",
+      "savings": { "bytes": 0, "wastedMs": 150 },
+      "details": { "overallSavingsBytes": 0, "overallSavingsMs": 150, "resourceCount": 2 }
+    },
+    {
+      "id": "opp-002",
+      "title": "Serve images in next-gen formats",
+      "description": "3 decorative images could be converted to WebP for minor size savings.",
+      "savings": { "bytes": 35000, "wastedMs": 80 },
+      "details": { "overallSavingsBytes": 35000, "overallSavingsMs": 80, "resourceCount": 3 }
+    }
+  ],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 920000,
+    "totalTransferSize": 780000,
+    "domSize": 1800,
+    "renderBlockingResources": 2,
+    "thirdPartySummary": { "transferSize": 210000, "blockingTime": 60, "entityCount": 4 }
+  }
+}

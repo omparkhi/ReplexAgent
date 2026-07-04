@@ -1,0 +1,160 @@
+{
+  "url": "https://example.com",
+  "title": "Example Website",
+  "auditor": "test-harness",
+  "auditedAt": "2026-07-04",
+  "findings": [
+    {
+      "id": "sec-001",
+      "title": "XSS vulnerability in search input",
+      "description": "User input is reflected in the page without sanitization, allowing cross-site scripting attacks.",
+      "severity": "critical",
+      "category": "security",
+      "type": "technical",
+      "element": "#search-form input[name=q]",
+      "rule": "OWASP-A7:2017",
+      "recommendation": "Sanitize and encode all user input before rendering. Implement Content Security Policy headers.",
+      "metadata": { "cwe": "CWE-79", "cvss": 9.1 }
+    },
+    {
+      "id": "sec-002",
+      "title": "Mixed content (HTTP resources on HTTPS page)",
+      "description": "Page loads 3 scripts and 2 stylesheets over plain HTTP while the page itself is served over HTTPS.",
+      "severity": "high",
+      "category": "security",
+      "type": "technical",
+      "element": "script[src^='http://'], link[rel='stylesheet'][href^='http://']",
+      "recommendation": "Update all resource URLs to use HTTPS. Use protocol-relative URLs or explicit HTTPS.",
+      "metadata": { "cwe": "CWE-319" }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Missing alt text on images",
+      "description": "15 images across the site lack alt attributes, making them inaccessible to screen readers.",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "content",
+      "element": "img:not([alt])",
+      "rule": "WCAG 2.1 - 1.1.1",
+      "recommendation": "Add descriptive alt text to all images. Use alt='' for decorative images.",
+      "metadata": { "wcagLevel": "A", "affectedPages": 8 }
+    },
+    {
+      "id": "a11y-002",
+      "title": "Insufficient color contrast",
+      "description": "23 text elements have contrast ratio below 4.5:1 (WCAG AA minimum).",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "WCAG 2.1 - 1.4.3",
+      "recommendation": "Increase text contrast to meet WCAG AA (4.5:1 for normal text, 3:1 for large text).",
+      "metadata": { "wcagLevel": "AA", "elements": 23, "worstRatio": 2.1 }
+    },
+    {
+      "id": "a11y-003",
+      "title": "Keyboard navigation trap in modal",
+      "description": "Focus cannot be moved out of the modal dialog using keyboard alone.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "technical",
+      "element": "[role='dialog']",
+      "rule": "WCAG 2.1 - 2.1.2",
+      "recommendation": "Implement focus trapping with Escape key support and visible close button.",
+      "metadata": { "wcagLevel": "A" }
+    },
+    {
+      "id": "perf-001",
+      "title": "Slow server response time (TTFB)",
+      "description": "Time to First Byte exceeds 2 seconds on 12 pages. Average TTFB: 3.2s.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse: server-response-time",
+      "recommendation": "Optimize server-side rendering, implement caching, use a CDN, and reduce database query complexity.",
+      "metadata": { "avgTtfb": 3200, "affectedPages": 12 }
+    },
+    {
+      "id": "perf-002",
+      "title": "Unoptimized images",
+      "description": "8 images are served in PNG format where WebP would reduce size by 40-60%. Total浪费: ~2.4MB.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "recommendation": "Convert images to WebP/AVIF format. Implement responsive images with srcset.",
+      "metadata": { "wastedBytes": 2516582, "imageCount": 8 }
+    },
+    {
+      "id": "perf-003",
+      "title": "Render-blocking JavaScript",
+      "description": "5 synchronous scripts block page rendering until fully downloaded and executed.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "element": "script:not([async]):not([defer])",
+      "recommendation": "Add async or defer attributes to non-critical scripts. Inline critical CSS.",
+      "metadata": { "scriptCount": 5, "totalSize": "180KB" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Missing meta descriptions",
+      "description": "10 pages lack meta descriptions, reducing search snippet quality.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "metadata",
+      "recommendation": "Add unique, compelling meta descriptions (120-160 characters) to all pages.",
+      "metadata": { "affectedPages": 10 }
+    },
+    {
+      "id": "seo-002",
+      "title": "Missing robots.txt",
+      "description": "No robots.txt file found at domain root.",
+      "severity": "low",
+      "category": "seo",
+      "type": "technical",
+      "recommendation": "Create a robots.txt file to guide search engine crawlers.",
+      "metadata": {}
+    },
+    {
+      "id": "seo-003",
+      "title": "Missing structured data",
+      "description": "No JSON-LD or Schema.org structured data found on any page.",
+      "severity": "low",
+      "category": "seo",
+      "type": "metadata",
+      "recommendation": "Implement JSON-LD structured data for Organization, WebSite, and BreadcrumbList schemas.",
+      "metadata": {}
+    },
+    {
+      "id": "bp-001",
+      "title": "Deprecated HTML elements",
+      "description": "Page uses deprecated <center>, <font>, and <marquee> elements.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "technical",
+      "element": "center, font, marquee",
+      "recommendation": "Replace deprecated elements with semantic HTML and CSS.",
+      "metadata": { "elements": ["center", "font", "marquee"] }
+    },
+    {
+      "id": "bp-002",
+      "title": "Missing viewport meta tag on 2 pages",
+      "description": "2 pages lack the viewport meta tag, causing poor mobile rendering.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "metadata",
+      "element": "meta[name=viewport]",
+      "recommendation": "Add <meta name='viewport' content='width=device-width, initial-scale=1'> to all pages.",
+      "metadata": { "affectedPages": 2 }
+    },
+    {
+      "id": "bp-003",
+      "title": "Console errors in production",
+      "description": "3 JavaScript errors logged to browser console on the homepage.",
+      "severity": "low",
+      "category": "best-practice",
+      "type": "technical",
+      "recommendation": "Fix JavaScript errors and implement error monitoring.",
+      "metadata": { "errorCount": 3 }
+    }
+  ]
+}

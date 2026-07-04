@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notion</title>
+<style>
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a1a2e; background: #f8f9fa; }
+      .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+      .report-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid #0f3460; }
+      .report-header h1 { font-size: 2rem; color: #0f3460; margin-bottom: 0.5rem; }
+      .meta { display: flex; gap: 2rem; justify-content: center; color: #666; font-size: 0.9rem; }
+      .report-section { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+      .report-section h2 { color: #0f3460; font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e94560; }
+      .report-section h3 { color: #16213e; margin: 1.2rem 0 0.6rem; font-size: 1.1rem; }
+      .report-section h4 { color: #0f3460; margin: 1rem 0 0.4rem; }
+      .overview { color: #444; margin-bottom: 1rem; }
+      .risk-card { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+      .risk-label { font-size: 0.8rem; text-transform: uppercase; color: #856404; letter-spacing: 0.05em; }
+      .risk-value { font-size: 1.2rem; font-weight: 600; color: #856404; }
+      .stats-row { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .stat { text-align: center; flex: 1; padding: 0.8rem; background: #f1f3f5; border-radius: 6px; }
+      .stat-value { display: block; font-size: 1.3rem; font-weight: 700; color: #0f3460; }
+      .stat-label { display: block; font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+      .top-action { padding: 0.8rem; background: #e8f4f8; border-radius: 4px; margin: 1rem 0; }
+      .data-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+      .data-table th, .data-table td { padding: 0.5rem 0.8rem; text-align: left; border-bottom: 1px solid #e9ecef; }
+      .data-table th { background: #f1f3f5; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+      .severity-badge, .impact-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; font-weight: 600; }
+      .severity-badge.critical, .impact-badge.critical { background: #dc3545; color: #fff; }
+      .severity-badge.high, .impact-badge.high { background: #fd7e14; color: #fff; }
+      .severity-badge.medium, .impact-badge.medium { background: #ffc107; color: #212529; }
+      .severity-badge.low, .impact-badge.low { background: #28a745; color: #fff; }
+      .severity-badge.info { background: #17a2b8; color: #fff; }
+      .severity-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+      .finding-group { margin: 1rem 0; padding: 0.8rem; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #0f3460; }
+      .finding-group h4 { margin-bottom: 0.5rem; }
+      .count { font-weight: normal; color: #666; font-size: 0.85rem; }
+      .findings-list { list-style: none; padding: 0; }
+      .finding-item { padding: 0.4rem 0; border-bottom: 1px solid #e9ecef; }
+      .finding-title { font-weight: 600; }
+      .recommendation { color: #555; font-size: 0.9rem; }
+      .quick-wins { margin: 0.5rem 0; }
+      .quick-wins li { padding: 0.3rem 0; color: #28a745; }
+      .financials { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .effort-badge { display: inline-block; padding: 0.1rem 0.4rem; background: #e9ecef; border-radius: 3px; font-size: 0.8rem; margin-left: 0.5rem; }
+      .roadmap-phase { margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #e94560; }
+      .phase-meta { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .timeframe { font-weight: 600; color: #0f3460; }
+      .phase-hours { font-weight: 600; color: #e94560; margin-bottom: 0.5rem; }
+      .phase-items { list-style: none; padding: 0; }
+      .roadmap-item { padding: 0.6rem 0; border-bottom: 1px solid #e9ecef; }
+      .roadmap-item p { margin: 0.3rem 0 0; color: #555; font-size: 0.9rem; }
+      .steps { margin: 0.3rem 0 0 1rem; font-size: 0.85rem; color: #666; }
+      .confidence-badge { margin: 1rem 0; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem; }
+      .confidence-badge.high { background: #d4edda; border-left: 4px solid #28a745; }
+      .confidence-badge.medium { background: #fff3cd; border-left: 4px solid #ffc107; }
+      .confidence-badge.low { background: #f8d7da; border-left: 4px solid #dc3545; }
+      .confidence-badge .label { font-weight: 600; display: block; }
+      .confidence-badge .score { font-size: 1.1rem; font-weight: 700; }
+      .confidence-badge .rationale { display: block; color: #555; margin-top: 0.3rem; }
+      .excluded { margin-top: 0.5rem; }
+      .excluded ul { margin: 0.3rem 0 0 1rem; font-size: 0.8rem; color: #888; }
+      .report-footer { text-align: center; padding: 1.5rem; color: #666; font-size: 0.85rem; border-top: 2px solid #e9ecef; margin-top: 1rem; }
+      .confidence-footer { font-style: italic; margin-top: 0.3rem; }
+      @media print { .container { max-width: 100%; padding: 1rem; } .report-section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+      @media (max-width: 600px) { .container { padding: 1rem; } .stats-row, .financials { flex-direction: column; } .meta { flex-direction: column; gap: 0.3rem; } }
+    
+</style>
+</head>
+<body>
+<div class="container">
+
+      <header class="report-header">
+        <h1>Notion</h1>
+        <div class="meta">
+          <span><strong>URL:</strong> https://www.notion.so</span>
+          <span><strong>Generated:</strong> 2026-07-04T12:09:30.001Z</span>
+        </div>
+      </header>
+
+      <div class="confidence-badge high">
+        <span class="label">Overall Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">Overall confidence across 5 sections. 78 total data points verified.</span>
+        
+      </div>
+
+      <section class="report-section executive">
+        <h2>Executive Summary</h2>
+        <p class="overview">Audit of https://www.notion.so identified 9 findings across 5 categories. 0 require immediate attention. Estimated total remediation effort: 47 hours.</p>
+        <div class="risk-card">
+          <div class="risk-label">Overall Risk</div>
+          <div class="risk-value">MODERATE — Multiple moderate issues</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">9</span><span class="stat-label">Total Findings</span></div>
+          <div class="stat"><span class="stat-value">2-4 weeks</span><span class="stat-label">Timeline</span></div>
+        </div>
+        <div class="top-action">
+          <strong>Top Action:</strong> Address &quot;Largest Contentful Paint (LCP) slightly exceeds 2.5s&quot; (Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.)
+        </div>
+        <h3>By Severity</h3>
+        <div class="severity-badges"><span class="severity-badge medium">Medium: 6</span> <span class="severity-badge low">Low: 3</span></div>
+        <h3>By Category</h3>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Count</th></tr></thead>
+          <tbody><tr><td>SEO</td><td>2</td></tr><tr><td>Accessibility</td><td>2</td></tr><tr><td>Performance</td><td>3</td></tr><tr><td>Security</td><td>1</td></tr><tr><td>Best Practice</td><td>1</td></tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">5 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section developer">
+        <h2>Developer Report</h2>
+        <p class="overview">9 findings grouped into 7 categories. Total estimated effort: 47 hours.</p>
+        <h3>Technical Debt</h3>
+        <p>Manageable technical debt. Most issues can be addressed with standard development effort.</p>
+        <h3>Quick Wins</h3>
+        <p>No quick wins identified.</p>
+        <h3>Finding Groups</h3>
+        
+        <div class="finding-group">
+          <h4>Performance — Performance <span class="count">(3 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Largest Contentful Paint (LCP) slightly exceeds 2.5s</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.</span></li><li class="finding-item"><span class="finding-title">Total Blocking Time (TBT) needs improvement</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.</span></li><li class="finding-item"><span class="finding-title">Serve images in next-gen formats</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Convert product screenshots to WebP with JPEG fallback for older browsers.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">ARIA attributes do not match their roles</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>SEO — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Links are not crawlable</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Use proper &lt;a href='...'&gt; elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Security — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Uses a library with known security vulnerabilities</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Update lodash to version 4.17.21 or later.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Content <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Some links have the same accessible name as their destination</span> <span class="severity-badge low">Low</span><br><span class="recommendation">Use descriptive link text that indicates the destination or purpose.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>SEO — Content <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Image elements do not have [alt] attributes</span> <span class="severity-badge low">Low</span><br><span class="recommendation">Add alt='' to decorative images and descriptive alt text to informational images.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Best Practice — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Missing Permissions-Policy header</span> <span class="severity-badge low">Low</span><br><span class="recommendation">Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.</span></li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">8 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section business">
+        <h2>Business Summary</h2>
+        <p class="overview">Total estimated effort: 47.1 hours ($7,065 at $150/hr). 9 findings with business impact assessments.</p>
+        <div class="financials">
+          <div class="stat"><span class="stat-value">47.1h</span><span class="stat-label">Total Effort</span></div>
+          <div class="stat"><span class="stat-value">$7,065</span><span class="stat-label">Estimated Cost</span></div>
+        </div>
+        <h3>ROI</h3>
+        <p>No critical business impact issues identified.</p>
+        <h3>Impact Summary</h3>
+        <table class="data-table">
+          <thead><tr><th>Finding</th><th>Impact</th><th>Effort</th><th>Hours</th><th>Priority</th></tr></thead>
+          <tbody><tr>
+        <td>Links are not crawlable</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Easy</td>
+        <td>4.5h</td>
+        <td>52.0</td>
+      </tr><tr>
+        <td>Largest Contentful Paint (LCP) slightly exceeds 2.5s</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Total Blocking Time (TBT) needs improvement</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Serve images in next-gen formats</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>ARIA attributes do not match their roles</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>9h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Uses a library with known security vulnerabilities</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>12h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Image elements do not have [alt] attributes</td>
+        <td><span class="impact-badge low">Low</span></td>
+        <td>Trivial</td>
+        <td>1.5h</td>
+        <td>30.0</td>
+      </tr><tr>
+        <td>Missing Permissions-Policy header</td>
+        <td><span class="impact-badge low">Low</span></td>
+        <td>Trivial</td>
+        <td>1.5h</td>
+        <td>30.0</td>
+      </tr><tr>
+        <td>Some links have the same accessible name as their destination</td>
+        <td><span class="impact-badge low">Low</span></td>
+        <td>Easy</td>
+        <td>3h</td>
+        <td>26.0</td>
+      </tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">18 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section roadmap">
+        <h2>Implementation Roadmap</h2>
+        <p class="overview">2 phases planned over 2-4 weeks. Total effort: 47.099999999999994 hours.</p>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">47.099999999999994h</span><span class="stat-label">Total Hours</span></div>
+          <div class="stat"><span class="stat-value">2-4 weeks</span><span class="stat-label">Timeline</span></div>
+        </div>
+        
+        <div class="roadmap-phase">
+          <h4>Phase 3: Medium Priority</h4>
+          <div class="phase-meta"><span class="timeframe">2-4 weeks</span> — Address moderate severity improvements</div>
+          <div class="phase-hours">41.099999999999994 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Links are not crawlable</strong>
+            <span class="effort-badge">Easy — 4.5h</span>
+            <p>Use proper &lt;a href='...'&gt; elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Use proper &lt;a href='...'&gt; elements for navigation links. JavaScript handlers should enhance, not replace, HTML links.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Largest Contentful Paint (LCP) slightly exceeds 2.5s</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Preload the LCP image, optimize the hero section, and implement dynamic import for below-the-fold content.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Total Blocking Time (TBT) needs improvement</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Break up long tasks in the analytics and onboarding scripts. Consider web workers for heavy computation.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Serve images in next-gen formats</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Convert product screenshots to WebP with JPEG fallback for older browsers.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Convert product screenshots to WebP with JPEG fallback for older browsers.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>ARIA attributes do not match their roles</strong>
+            <span class="effort-badge">Moderate — 9h</span>
+            <p>Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Ensure ARIA attributes are valid for the element's role and update dynamically with JavaScript.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Uses a library with known security vulnerabilities</strong>
+            <span class="effort-badge">Moderate — 12h</span>
+            <p>Update lodash to version 4.17.21 or later.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Update lodash to version 4.17.21 or later.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 4: Low Priority &amp; Cleanup</h4>
+          <div class="phase-meta"><span class="timeframe">1-2 months</span> — Handle low severity items and best practices</div>
+          <div class="phase-hours">6 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Image elements do not have [alt] attributes</strong>
+            <span class="effort-badge">Trivial — 1.5h</span>
+            <p>Add alt='' to decorative images and descriptive alt text to informational images.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Add alt='' to decorative images and descriptive alt text to informational images.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Missing Permissions-Policy header</strong>
+            <span class="effort-badge">Trivial — 1.5h</span>
+            <p>Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Set a Permissions-Policy header to restrict unused browser features like camera, microphone, and geolocation.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Some links have the same accessible name as their destination</strong>
+            <span class="effort-badge">Easy — 3h</span>
+            <p>Use descriptive link text that indicates the destination or purpose.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Use descriptive link text that indicates the destination or purpose.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">9 data points verified</span>
+        
+      </div>
+      </section>
+
+      <footer class="report-footer">
+        <p>Report generated by ReplexAgent Report Agent</p>
+        <p class="confidence-footer">Confidence: 100% — Overall confidence across 5 sections. 78 total data points verified.</p>
+      </footer>
+</div>
+</body>
+</html>

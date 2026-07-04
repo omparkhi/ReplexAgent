@@ -1,0 +1,33 @@
+{
+  "name": "replex-agent-runtime",
+  "version": "1.0.0",
+  "description": "Production-ready modular Agent Runtime for Node.js and Express.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "tsc --noEmit",
+    "test": "node --test",
+    "test-agent": "node scripts/run-agent.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "mongodb": "^7.4.0",
+    "pino": "^9.5.0",
+    "pino-http": "^10.4.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

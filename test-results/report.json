@@ -1,0 +1,944 @@
+{
+  "meta": {
+    "url": "https://old.example-corp.com",
+    "title": "Example Corp Legacy Site",
+    "generatedAt": "2026-07-04T12:14:46.597Z",
+    "sourceFile": "poor-site.json",
+    "scores": {
+      "performance": 18,
+      "accessibility": 42,
+      "seo": 35,
+      "bestPractices": 29
+    },
+    "metrics": {
+      "firstContentfulPaint": {
+        "value": 6200,
+        "unit": "ms",
+        "score": 0.05
+      },
+      "largestContentfulPaint": {
+        "value": 12800,
+        "unit": "ms",
+        "score": 0.02
+      },
+      "totalBlockingTime": {
+        "value": 2400,
+        "unit": "ms",
+        "score": 0.02
+      },
+      "cumulativeLayoutShift": {
+        "value": 0.45,
+        "unit": "score",
+        "score": 0.1
+      },
+      "speedIndex": {
+        "value": 9500,
+        "unit": "ms",
+        "score": 0.05
+      },
+      "interactive": {
+        "value": 14200,
+        "unit": "ms",
+        "score": 0.02
+      },
+      "serverResponseTime": {
+        "value": 2800,
+        "unit": "ms",
+        "score": 0.01
+      }
+    }
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 131 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:160e4142-2dd7-4ded-8f05-645d9e016220",
+      "findingGroup:816887d3-4398-406a-a227-d158f85eb66f",
+      "findingGroup:279501c7-c705-427c-b6d4-68b6f3961f0a",
+      "findingGroup:a173c631-1978-477f-9bc0-954e0ce1a10c",
+      "findingGroup:fbc9e784-96fa-4602-a5c1-9bd9192580af",
+      "findingGroup:c7e56a4d-3e2c-4824-97f2-dd5993be07c4",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:perf-004",
+      "impact:perf-005",
+      "impact:perf-006",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:a11y-004",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:seo-003",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "impact:bp-004",
+      "impact:bp-005",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:perf-004",
+      "priority:seo-001",
+      "priority:bp-001",
+      "priority:bp-002",
+      "priority:a11y-003",
+      "priority:perf-003",
+      "priority:perf-005",
+      "priority:a11y-002",
+      "priority:bp-004",
+      "priority:seo-002",
+      "priority:seo-003",
+      "priority:a11y-001",
+      "priority:bp-005",
+      "priority:perf-006",
+      "priority:a11y-004",
+      "priority:bp-003",
+      "action:perf-001",
+      "action:perf-002",
+      "action:perf-004",
+      "action:a11y-003",
+      "action:bp-004",
+      "action:seo-001",
+      "action:bp-001",
+      "action:bp-002",
+      "action:perf-003",
+      "action:perf-005",
+      "action:a11y-002",
+      "action:a11y-001",
+      "action:bp-005",
+      "action:seo-002",
+      "action:seo-003",
+      "action:perf-006",
+      "action:a11y-004",
+      "action:bp-003",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Performance — Performance",
+      "group:Accessibility — Content",
+      "group:Security — Technical",
+      "group:Accessibility — Technical",
+      "group:SEO — Metadata",
+      "group:Best Practice — Technical",
+      "technicalDebt",
+      "quickWins",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:perf-004",
+      "impact:perf-005",
+      "impact:perf-006",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:a11y-004",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:seo-003",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "impact:bp-004",
+      "impact:bp-005",
+      "priority:perf-001",
+      "priority:perf-002",
+      "priority:perf-004",
+      "priority:seo-001",
+      "priority:bp-001",
+      "priority:bp-002",
+      "priority:a11y-003",
+      "priority:perf-003",
+      "priority:perf-005",
+      "priority:a11y-002",
+      "priority:bp-004",
+      "priority:seo-002",
+      "priority:seo-003",
+      "priority:a11y-001",
+      "priority:bp-005",
+      "priority:perf-006",
+      "priority:a11y-004",
+      "priority:bp-003",
+      "roadmap:perf-001",
+      "roadmap:perf-002",
+      "roadmap:perf-004",
+      "roadmap:a11y-003",
+      "roadmap:bp-004",
+      "roadmap:seo-001",
+      "roadmap:bp-001",
+      "roadmap:bp-002",
+      "roadmap:perf-003",
+      "roadmap:perf-005",
+      "roadmap:a11y-002",
+      "roadmap:a11y-001",
+      "roadmap:bp-005",
+      "roadmap:seo-002",
+      "roadmap:seo-003",
+      "roadmap:perf-006",
+      "roadmap:a11y-004",
+      "roadmap:bp-003"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://old.example-corp.com identified 18 findings across 5 categories. 13 require immediate attention. Estimated total remediation effort: 167 hours.",
+    "overallRisk": "CRITICAL — Immediate action required",
+    "totalFindings": 18,
+    "bySeverity": {
+      "critical": 5,
+      "high": 8,
+      "medium": 5,
+      "low": 0,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 3,
+      "accessibility": 4,
+      "performance": 6,
+      "security": 3,
+      "best-practice": 2
+    },
+    "topAction": "Address \"Largest Contentful Paint (LCP) exceeds 4s\" (The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.)",
+    "estimatedTimeline": "1-2 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "18 findings grouped into 6 categories. Total estimated effort: 167 hours.",
+    "groups": [
+      {
+        "name": "Performance — Performance",
+        "count": 6,
+        "maxSeverity": "critical",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 4s",
+            "severity": "critical",
+            "recommendation": "The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints."
+          },
+          {
+            "id": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "severity": "critical",
+            "recommendation": "Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript."
+          },
+          {
+            "id": "perf-003",
+            "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+            "severity": "high",
+            "recommendation": "Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load."
+          },
+          {
+            "id": "perf-004",
+            "title": "Server response time (TTFB) exceeds 600ms",
+            "severity": "critical",
+            "recommendation": "Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN."
+          },
+          {
+            "id": "perf-005",
+            "title": "Eliminate render-blocking resources",
+            "severity": "high",
+            "recommendation": "Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously."
+          },
+          {
+            "id": "perf-006",
+            "title": "Unused CSS rules",
+            "severity": "medium",
+            "recommendation": "Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 2,
+        "maxSeverity": "critical",
+        "findings": [
+          {
+            "id": "a11y-002",
+            "title": "Form elements do not have associated labels",
+            "severity": "high",
+            "recommendation": "Associate each form input with a <label> element using the for attribute or by wrapping the input in the label."
+          },
+          {
+            "id": "a11y-003",
+            "title": "Image elements do not have [alt] attributes",
+            "severity": "critical",
+            "recommendation": "Add descriptive alt text to all informational images. Use alt='' for decorative images."
+          }
+        ]
+      },
+      {
+        "name": "Security — Technical",
+        "count": 3,
+        "maxSeverity": "critical",
+        "findings": [
+          {
+            "id": "bp-003",
+            "title": "Missing X-Content-Type-Options header",
+            "severity": "medium",
+            "recommendation": "Add X-Content-Type-Options: nosniff header to all responses."
+          },
+          {
+            "id": "bp-004",
+            "title": "Mixed content detected",
+            "severity": "critical",
+            "recommendation": "Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments."
+          },
+          {
+            "id": "bp-005",
+            "title": "CSP header is missing",
+            "severity": "high",
+            "recommendation": "Implement a strict Content-Security-Policy header."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Technical",
+        "count": 2,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Missing document language",
+            "severity": "high",
+            "recommendation": "Add lang='en' (or appropriate language code) to the <html> element."
+          },
+          {
+            "id": "a11y-004",
+            "title": "Elements with ARIA roles do not have required ARIA attributes",
+            "severity": "medium",
+            "recommendation": "Add required ARIA attributes to all elements with explicit roles."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Metadata",
+        "count": 3,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Document does not have a meta description",
+            "severity": "high",
+            "recommendation": "Add unique meta descriptions to all pages."
+          },
+          {
+            "id": "seo-002",
+            "title": "Page does not have a valid hreflang",
+            "severity": "medium",
+            "recommendation": "Ensure all hreflang links are bidirectional and point to valid URLs."
+          },
+          {
+            "id": "seo-003",
+            "title": "Document does not have a valid rel=canonical",
+            "severity": "medium",
+            "recommendation": "Add a rel=canonical tag pointing to the preferred URL for each page."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 2,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Uses HTTP/1.1 for some resources",
+            "severity": "high",
+            "recommendation": "Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration."
+          },
+          {
+            "id": "bp-002",
+            "title": "Browser errors logged to the console",
+            "severity": "high",
+            "recommendation": "Fix all console errors. Implement error monitoring with Sentry or similar."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Significant technical debt detected. 3 issues require complex refactoring (~56 hours).",
+    "quickWins": [
+      "Document does not have a meta description: Add unique meta descriptions to all pages.",
+      "Uses HTTP/1.1 for some resources: Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.",
+      "Browser errors logged to the console: Fix all console errors. Implement error monitoring with Sentry or similar."
+    ],
+    "confidence": {
+      "score": 1,
+      "rationale": "8 data points verified",
+      "verifiedDataPoints": [
+        "group:Performance — Performance",
+        "group:Accessibility — Content",
+        "group:Security — Technical",
+        "group:Accessibility — Technical",
+        "group:SEO — Metadata",
+        "group:Best Practice — Technical",
+        "technicalDebt",
+        "quickWins"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 166.9 hours ($25,035 at $150/hr). 18 findings with business impact assessments.",
+    "totalEffortHours": 166.9,
+    "estimatedCost": 25035,
+    "impactSummary": [
+      {
+        "findingId": "perf-001",
+        "title": "Largest Contentful Paint (LCP) exceeds 4s",
+        "businessImpact": "critical",
+        "effort": "moderate",
+        "effortHours": 10.4,
+        "priorityScore": 80
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Total Blocking Time (TBT) exceeds 200ms",
+        "businessImpact": "critical",
+        "effort": "moderate",
+        "effortHours": 10.4,
+        "priorityScore": 80
+      },
+      {
+        "findingId": "perf-004",
+        "title": "Server response time (TTFB) exceeds 600ms",
+        "businessImpact": "critical",
+        "effort": "moderate",
+        "effortHours": 10.4,
+        "priorityScore": 80
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Document does not have a meta description",
+        "businessImpact": "high",
+        "effort": "easy",
+        "effortHours": 3.6,
+        "priorityScore": 78
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Uses HTTP/1.1 for some resources",
+        "businessImpact": "high",
+        "effort": "easy",
+        "effortHours": 4.5,
+        "priorityScore": 78
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Browser errors logged to the console",
+        "businessImpact": "high",
+        "effort": "easy",
+        "effortHours": 4.5,
+        "priorityScore": 78
+      },
+      {
+        "findingId": "a11y-003",
+        "title": "Image elements do not have [alt] attributes",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 12,
+        "priorityScore": 70
+      },
+      {
+        "findingId": "perf-003",
+        "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "perf-005",
+        "title": "Eliminate render-blocking resources",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "a11y-002",
+        "title": "Form elements do not have associated labels",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "bp-004",
+        "title": "Mixed content detected",
+        "businessImpact": "critical",
+        "effort": "difficult",
+        "effortHours": 24,
+        "priorityScore": 56
+      },
+      {
+        "findingId": "seo-002",
+        "title": "Page does not have a valid hreflang",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 2.4,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "seo-003",
+        "title": "Document does not have a valid rel=canonical",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 2.4,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "a11y-001",
+        "title": "Missing document language",
+        "businessImpact": "high",
+        "effort": "difficult",
+        "effortHours": 13.5,
+        "priorityScore": 42
+      },
+      {
+        "findingId": "bp-005",
+        "title": "CSP header is missing",
+        "businessImpact": "high",
+        "effort": "difficult",
+        "effortHours": 18,
+        "priorityScore": 42
+      },
+      {
+        "findingId": "perf-006",
+        "title": "Unused CSS rules",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "a11y-004",
+        "title": "Elements with ARIA roles do not have required ARIA attributes",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "bp-003",
+        "title": "Missing X-Content-Type-Options header",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 12,
+        "priorityScore": 40
+      }
+    ],
+    "roi": "Addressing 13 high-impact issues first will reduce critical risk exposure. Estimated investment: $25,035 for 166.9 hours of work.",
+    "confidence": {
+      "score": 1,
+      "rationale": "36 data points verified",
+      "verifiedDataPoints": [
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:perf-003",
+        "impact:perf-004",
+        "impact:perf-005",
+        "impact:perf-006",
+        "impact:a11y-001",
+        "impact:a11y-002",
+        "impact:a11y-003",
+        "impact:a11y-004",
+        "impact:seo-001",
+        "impact:seo-002",
+        "impact:seo-003",
+        "impact:bp-001",
+        "impact:bp-002",
+        "impact:bp-003",
+        "impact:bp-004",
+        "impact:bp-005",
+        "priority:perf-001",
+        "priority:perf-002",
+        "priority:perf-004",
+        "priority:seo-001",
+        "priority:bp-001",
+        "priority:bp-002",
+        "priority:a11y-003",
+        "priority:perf-003",
+        "priority:perf-005",
+        "priority:a11y-002",
+        "priority:bp-004",
+        "priority:seo-002",
+        "priority:seo-003",
+        "priority:a11y-001",
+        "priority:bp-005",
+        "priority:perf-006",
+        "priority:a11y-004",
+        "priority:bp-003"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "3 phases planned over 2-3 months. Total effort: 166.9 hours.",
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "description": "Address all critical severity issues immediately",
+        "timeframe": "1-3 days",
+        "items": [
+          {
+            "findingId": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 4s",
+            "action": "The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.",
+            "effort": "moderate",
+            "effortHours": 10.4,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: The LCP element is a 4MB uncompressed JPEG hero image. Convert to WebP, implement responsive images with srcset, and add preload hints.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "action": "Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.",
+            "effort": "moderate",
+            "effortHours": 10.4,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Main thread breakdown: Script evaluation (1800ms), Style calculation (400ms), Layout (200ms). Defer non-critical scripts and eliminate render-blocking JavaScript.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-004",
+            "title": "Server response time (TTFB) exceeds 600ms",
+            "action": "Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.",
+            "effort": "moderate",
+            "effortHours": 10.4,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Server runs on shared hosting with no caching. Implement Redis caching, optimize database queries, and consider a CDN.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-003",
+            "title": "Image elements do not have [alt] attributes",
+            "action": "Add descriptive alt text to all informational images. Use alt='' for decorative images.",
+            "effort": "moderate",
+            "effortHours": 12,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Add descriptive alt text to all informational images. Use alt='' for decorative images.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-004",
+            "title": "Mixed content detected",
+            "action": "Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.",
+            "effort": "difficult",
+            "effortHours": 24,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Update all resource URLs to HTTPS. Use protocol-relative URLs if needed for development environments.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 67.2,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:perf-001",
+            "action:perf-002",
+            "action:perf-004",
+            "action:a11y-003",
+            "action:bp-004"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 2: High Priority",
+        "description": "Resolve high severity issues",
+        "timeframe": "1-2 weeks",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Document does not have a meta description",
+            "action": "Add unique meta descriptions to all pages.",
+            "effort": "easy",
+            "effortHours": 3.6,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add unique meta descriptions to all pages.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-001",
+            "title": "Uses HTTP/1.1 for some resources",
+            "action": "Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.",
+            "effort": "easy",
+            "effortHours": 4.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Enable HTTP/2 or HTTP/3 on the server. Most modern servers support HTTP/2 with minimal configuration.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-002",
+            "title": "Browser errors logged to the console",
+            "action": "Fix all console errors. Implement error monitoring with Sentry or similar.",
+            "effort": "easy",
+            "effortHours": 4.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Fix all console errors. Implement error monitoring with Sentry or similar.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-003",
+            "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+            "action": "Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Set explicit width/height on images and embeds, use CSS aspect-ratio, and inject ad placeholders before ads load.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-005",
+            "title": "Eliminate render-blocking resources",
+            "action": "Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Inline critical CSS, defer non-critical resources, and load third-party scripts asynchronously.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-002",
+            "title": "Form elements do not have associated labels",
+            "action": "Associate each form input with a <label> element using the for attribute or by wrapping the input in the label.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Associate each form input with a <label> element using the for attribute or by wrapping the input in the label.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Missing document language",
+            "action": "Add lang='en' (or appropriate language code) to the <html> element.",
+            "effort": "difficult",
+            "effortHours": 13.5,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add lang='en' (or appropriate language code) to the <html> element.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-005",
+            "title": "CSP header is missing",
+            "action": "Implement a strict Content-Security-Policy header.",
+            "effort": "difficult",
+            "effortHours": 18,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Implement a strict Content-Security-Policy header.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 68.7,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:bp-001",
+            "action:bp-002",
+            "action:perf-003",
+            "action:perf-005",
+            "action:a11y-002",
+            "action:a11y-001",
+            "action:bp-005"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "seo-002",
+            "title": "Page does not have a valid hreflang",
+            "action": "Ensure all hreflang links are bidirectional and point to valid URLs.",
+            "effort": "easy",
+            "effortHours": 2.4,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Ensure all hreflang links are bidirectional and point to valid URLs.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "seo-003",
+            "title": "Document does not have a valid rel=canonical",
+            "action": "Add a rel=canonical tag pointing to the preferred URL for each page.",
+            "effort": "easy",
+            "effortHours": 2.4,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add a rel=canonical tag pointing to the preferred URL for each page.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-006",
+            "title": "Unused CSS rules",
+            "action": "Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Remove unused CSS or use critical CSS inlining. Consider PurgeCSS for automated dead code elimination.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-004",
+            "title": "Elements with ARIA roles do not have required ARIA attributes",
+            "action": "Add required ARIA attributes to all elements with explicit roles.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add required ARIA attributes to all elements with explicit roles.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-003",
+            "title": "Missing X-Content-Type-Options header",
+            "action": "Add X-Content-Type-Options: nosniff header to all responses.",
+            "effort": "moderate",
+            "effortHours": 12,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add X-Content-Type-Options: nosniff header to all responses.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 31,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-002",
+            "action:seo-003",
+            "action:perf-006",
+            "action:a11y-004",
+            "action:bp-003"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 166.9,
+    "estimatedTimeline": "2-3 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "18 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:perf-001",
+        "roadmap:perf-002",
+        "roadmap:perf-004",
+        "roadmap:a11y-003",
+        "roadmap:bp-004",
+        "roadmap:seo-001",
+        "roadmap:bp-001",
+        "roadmap:bp-002",
+        "roadmap:perf-003",
+        "roadmap:perf-005",
+        "roadmap:a11y-002",
+        "roadmap:a11y-001",
+        "roadmap:bp-005",
+        "roadmap:seo-002",
+        "roadmap:seo-003",
+        "roadmap:perf-006",
+        "roadmap:a11y-004",
+        "roadmap:bp-003"
+      ],
+      "excludedDataPoints": []
+    }
+  }
+}

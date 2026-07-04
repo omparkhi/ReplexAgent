@@ -1,0 +1,207 @@
+{
+  "url": "https://www.shopify.com",
+  "title": "Shopify",
+  "auditor": "lighthouse/12.0",
+  "auditedAt": "2026-07-04T11:30:00Z",
+  "scores": {
+    "performance": 45,
+    "accessibility": 86,
+    "seo": 91,
+    "bestPractices": 78
+  },
+  "metrics": {
+    "firstContentfulPaint": { "value": 2200, "unit": "ms", "score": 0.5 },
+    "largestContentfulPaint": { "value": 5100, "unit": "ms", "score": 0.2 },
+    "totalBlockingTime": { "value": 780, "unit": "ms", "score": 0.3 },
+    "cumulativeLayoutShift": { "value": 0.18, "unit": "score", "score": 0.5 },
+    "speedIndex": { "value": 4800, "unit": "ms", "score": 0.3 },
+    "interactive": { "value": 6200, "unit": "ms", "score": 0.2 },
+    "serverResponseTime": { "value": 450, "unit": "ms", "score": 0.5 }
+  },
+  "findings": [
+    {
+      "id": "perf-001",
+      "title": "Largest Contentful Paint (LCP) exceeds 4s",
+      "description": "LCP of 5100ms is classified as 'poor'. Product images and hero banners take too long to render.",
+      "severity": "critical",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:largest-contentful-paint-element",
+      "recommendation": "Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.",
+      "metadata": { "metric": "LCP", "value": 5100, "target": 2500, "element": ".product-hero-image" }
+    },
+    {
+      "id": "perf-002",
+      "title": "Total Blocking Time (TBT) exceeds 200ms",
+      "description": "TBT of 780ms blocks user interaction. Heavy JavaScript from product recommendations and chat widgets causes delays.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:mainthread-work-breakdown",
+      "recommendation": "Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.",
+      "metadata": { "metric": "TBT", "value": 780, "target": 200, "breakdown": { "thirdParty": 520, "ownScripts": 260 } }
+    },
+    {
+      "id": "perf-003",
+      "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+      "description": "CLS of 0.18 causes layout shifts during product image loading and ad insertion.",
+      "severity": "high",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:cumulative-layout-shift",
+      "recommendation": "Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.",
+      "metadata": { "metric": "CLS", "value": 0.18, "target": 0.1, "worstShift": "product-grid-image-load" }
+    },
+    {
+      "id": "perf-004",
+      "title": "Render-blocking resources on product pages",
+      "description": "6 stylesheets and 4 scripts block rendering, adding 1800ms to the first paint.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:render-blocking-resources",
+      "recommendation": "Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.",
+      "metadata": { "wastedMs": 1800, "resourceCount": 10 }
+    },
+    {
+      "id": "perf-005",
+      "title": "Image optimization opportunity",
+      "description": "24 product images are not using modern formats. Converting to WebP would save approximately 1.2MB.",
+      "severity": "medium",
+      "category": "performance",
+      "type": "performance",
+      "rule": "Lighthouse:uses-webp-images",
+      "recommendation": "Implement automatic image optimization pipeline with WebP/AVIF conversion.",
+      "metadata": { "wastedBytes": 1200000, "resourceCount": 24 }
+    },
+    {
+      "id": "a11y-001",
+      "title": "Product images missing alt text",
+      "description": "8 product images in the grid lack alt attributes, making them inaccessible to screen readers.",
+      "severity": "medium",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:image-alt",
+      "recommendation": "Add descriptive alt text including product name and key attributes.",
+      "metadata": { "elementCount": 8, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-002",
+      "title": "Price information not accessible to screen readers",
+      "description": "Product prices use custom CSS styling without proper semantic markup, making them unreadable by assistive technologies.",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "content",
+      "rule": "Lighthouse:aria-required-attr",
+      "recommendation": "Use semantic HTML for prices (<span class='price' aria-label='$29.99'>) and ensure proper ARIA attributes.",
+      "metadata": { "elementCount": 24, "wcagLevel": "A" }
+    },
+    {
+      "id": "a11y-003",
+      "title": "Shopping cart button not labeled",
+      "description": "The cart icon button has no accessible name, making it impossible for screen reader users to identify.",
+      "severity": "high",
+      "category": "accessibility",
+      "type": "technical",
+      "rule": "Lighthouse:button-name",
+      "recommendation": "Add aria-label='Shopping cart (3 items)' or visible text to the cart button.",
+      "metadata": { "element": ".cart-icon", "wcagLevel": "A" }
+    },
+    {
+      "id": "seo-001",
+      "title": "Product pages missing structured data",
+      "description": "Product listing pages lack JSON-LD Product schema, missing rich snippet opportunities in search results.",
+      "severity": "medium",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:structured-data",
+      "recommendation": "Add JSON-LD Product schema with name, price, availability, and review data to all product pages.",
+      "metadata": { "schemaType": "Product", "affectedPages": "all product pages" }
+    },
+    {
+      "id": "seo-002",
+      "title": "Product images missing descriptive filenames",
+      "description": "12 product images use generic filenames like 'IMG_001.jpg' instead of descriptive names.",
+      "severity": "low",
+      "category": "seo",
+      "type": "metadata",
+      "rule": "Lighthouse:img-rename",
+      "recommendation": "Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').",
+      "metadata": { "resourceCount": 12 }
+    },
+    {
+      "id": "bp-001",
+      "title": "Third-party script performance impact",
+      "description": "Analytics, chat, and recommendation scripts add 1.8MB and block the main thread for 520ms.",
+      "severity": "high",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:third-party-summary",
+      "recommendation": "Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.",
+      "metadata": { "blockingTime": 520, "transferSize": 1800000, "entityCount": 8 }
+    },
+    {
+      "id": "bp-002",
+      "title": "Cookie consent banner blocks content",
+      "description": "The cookie consent overlay covers 40% of the viewport and prevents interaction until accepted.",
+      "severity": "medium",
+      "category": "best-practice",
+      "type": "technical",
+      "rule": "Lighthouse:interceptive-element",
+      "recommendation": "Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.",
+      "metadata": { "element": ".cookie-consent-overlay", "coverage": "40%" }
+    },
+    {
+      "id": "bp-003",
+      "title": "Missing security headers",
+      "description": "X-Frame-Options and X-Content-Type-Options headers are missing, increasing vulnerability to clickjacking and MIME sniffing.",
+      "severity": "medium",
+      "category": "security",
+      "type": "technical",
+      "rule": "Lighthouse:csp-xss",
+      "recommendation": "Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.",
+      "metadata": { "cwe": "CWE-1021", "cvss": 5.0 }
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Defer offscreen images",
+      "description": "18 product images below the fold load eagerly, consuming bandwidth and blocking other resources.",
+      "savings": { "bytes": 980000, "wastedMs": 1400 },
+      "details": { "overallSavingsBytes": 980000, "overallSavingsMs": 1400, "resourceCount": 18 }
+    },
+    {
+      "id": "opp-002",
+      "title": "Properly size images",
+      "description": "6 product images are served at 2x their display size on mobile.",
+      "savings": { "bytes": 540000, "wastedMs": 800 },
+      "details": { "overallSavingsBytes": 540000, "overallSavingsMs": 800, "resourceCount": 6 }
+    },
+    {
+      "id": "opp-003",
+      "title": "Reduce the impact of third-party code",
+      "description": "Third-party scripts (analytics, chat, recommendations) block the main thread for 520ms.",
+      "savings": { "bytes": 1800000, "wastedMs": 520 },
+      "details": { "overallSavingsBytes": 1800000, "overallSavingsMs": 520, "entityCount": 8 }
+    },
+    {
+      "id": "opp-004",
+      "title": "Enable text compression",
+      "description": "API responses and JSON data are served without compression.",
+      "savings": { "bytes": 180000, "wastedMs": 300 },
+      "details": { "overallSavingsBytes": 180000, "overallSavingsMs": 300, "resourceCount": 12 }
+    }
+  ],
+  "metadata": {
+    "lighthouseVersion": "12.0.0",
+    "userAgent": "Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36",
+    "emulatedFormFactor": "mobile",
+    "runtimeError": null,
+    "totalByteWeight": 5200000,
+    "totalTransferSize": 4100000,
+    "domSize": 4200,
+    "renderBlockingResources": 10,
+    "thirdPartySummary": { "transferSize": 1850000, "blockingTime": 520, "entityCount": 8 }
+  }
+}

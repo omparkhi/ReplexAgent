@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify</title>
+<style>
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1a1a2e; background: #f8f9fa; }
+      .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+      .report-header { text-align: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid #0f3460; }
+      .report-header h1 { font-size: 2rem; color: #0f3460; margin-bottom: 0.5rem; }
+      .meta { display: flex; gap: 2rem; justify-content: center; color: #666; font-size: 0.9rem; }
+      .report-section { background: #fff; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+      .report-section h2 { color: #0f3460; font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e94560; }
+      .report-section h3 { color: #16213e; margin: 1.2rem 0 0.6rem; font-size: 1.1rem; }
+      .report-section h4 { color: #0f3460; margin: 1rem 0 0.4rem; }
+      .overview { color: #444; margin-bottom: 1rem; }
+      .risk-card { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+      .risk-label { font-size: 0.8rem; text-transform: uppercase; color: #856404; letter-spacing: 0.05em; }
+      .risk-value { font-size: 1.2rem; font-weight: 600; color: #856404; }
+      .stats-row { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .stat { text-align: center; flex: 1; padding: 0.8rem; background: #f1f3f5; border-radius: 6px; }
+      .stat-value { display: block; font-size: 1.3rem; font-weight: 700; color: #0f3460; }
+      .stat-label { display: block; font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+      .top-action { padding: 0.8rem; background: #e8f4f8; border-radius: 4px; margin: 1rem 0; }
+      .data-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+      .data-table th, .data-table td { padding: 0.5rem 0.8rem; text-align: left; border-bottom: 1px solid #e9ecef; }
+      .data-table th { background: #f1f3f5; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; }
+      .severity-badge, .impact-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.8rem; font-weight: 600; }
+      .severity-badge.critical, .impact-badge.critical { background: #dc3545; color: #fff; }
+      .severity-badge.high, .impact-badge.high { background: #fd7e14; color: #fff; }
+      .severity-badge.medium, .impact-badge.medium { background: #ffc107; color: #212529; }
+      .severity-badge.low, .impact-badge.low { background: #28a745; color: #fff; }
+      .severity-badge.info { background: #17a2b8; color: #fff; }
+      .severity-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+      .finding-group { margin: 1rem 0; padding: 0.8rem; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #0f3460; }
+      .finding-group h4 { margin-bottom: 0.5rem; }
+      .count { font-weight: normal; color: #666; font-size: 0.85rem; }
+      .findings-list { list-style: none; padding: 0; }
+      .finding-item { padding: 0.4rem 0; border-bottom: 1px solid #e9ecef; }
+      .finding-title { font-weight: 600; }
+      .recommendation { color: #555; font-size: 0.9rem; }
+      .quick-wins { margin: 0.5rem 0; }
+      .quick-wins li { padding: 0.3rem 0; color: #28a745; }
+      .financials { display: flex; gap: 1.5rem; margin: 1rem 0; }
+      .effort-badge { display: inline-block; padding: 0.1rem 0.4rem; background: #e9ecef; border-radius: 3px; font-size: 0.8rem; margin-left: 0.5rem; }
+      .roadmap-phase { margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #e94560; }
+      .phase-meta { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .timeframe { font-weight: 600; color: #0f3460; }
+      .phase-hours { font-weight: 600; color: #e94560; margin-bottom: 0.5rem; }
+      .phase-items { list-style: none; padding: 0; }
+      .roadmap-item { padding: 0.6rem 0; border-bottom: 1px solid #e9ecef; }
+      .roadmap-item p { margin: 0.3rem 0 0; color: #555; font-size: 0.9rem; }
+      .steps { margin: 0.3rem 0 0 1rem; font-size: 0.85rem; color: #666; }
+      .confidence-badge { margin: 1rem 0; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem; }
+      .confidence-badge.high { background: #d4edda; border-left: 4px solid #28a745; }
+      .confidence-badge.medium { background: #fff3cd; border-left: 4px solid #ffc107; }
+      .confidence-badge.low { background: #f8d7da; border-left: 4px solid #dc3545; }
+      .confidence-badge .label { font-weight: 600; display: block; }
+      .confidence-badge .score { font-size: 1.1rem; font-weight: 700; }
+      .confidence-badge .rationale { display: block; color: #555; margin-top: 0.3rem; }
+      .excluded { margin-top: 0.5rem; }
+      .excluded ul { margin: 0.3rem 0 0 1rem; font-size: 0.8rem; color: #888; }
+      .report-footer { text-align: center; padding: 1.5rem; color: #666; font-size: 0.85rem; border-top: 2px solid #e9ecef; margin-top: 1rem; }
+      .confidence-footer { font-style: italic; margin-top: 0.3rem; }
+      @media print { .container { max-width: 100%; padding: 1rem; } .report-section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+      @media (max-width: 600px) { .container { padding: 1rem; } .stats-row, .financials { flex-direction: column; } .meta { flex-direction: column; gap: 0.3rem; } }
+    
+</style>
+</head>
+<body>
+<div class="container">
+
+      <header class="report-header">
+        <h1>Shopify</h1>
+        <div class="meta">
+          <span><strong>URL:</strong> https://www.shopify.com</span>
+          <span><strong>Generated:</strong> 2026-07-04T12:09:30.177Z</span>
+        </div>
+      </header>
+
+      <div class="confidence-badge high">
+        <span class="label">Overall Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">Overall confidence across 5 sections. 101 total data points verified.</span>
+        
+      </div>
+
+      <section class="report-section executive">
+        <h2>Executive Summary</h2>
+        <p class="overview">Audit of https://www.shopify.com identified 13 findings across 5 categories. 6 require immediate attention. Estimated total remediation effort: 88 hours.</p>
+        <div class="risk-card">
+          <div class="risk-label">Overall Risk</div>
+          <div class="risk-value">CRITICAL — Immediate action required</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">13</span><span class="stat-label">Total Findings</span></div>
+          <div class="stat"><span class="stat-value">1-2 months</span><span class="stat-label">Timeline</span></div>
+        </div>
+        <div class="top-action">
+          <strong>Top Action:</strong> Address &quot;Largest Contentful Paint (LCP) exceeds 4s&quot; (Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.)
+        </div>
+        <h3>By Severity</h3>
+        <div class="severity-badges"><span class="severity-badge critical">Critical: 1</span> <span class="severity-badge high">High: 5</span> <span class="severity-badge medium">Medium: 6</span> <span class="severity-badge low">Low: 1</span></div>
+        <h3>By Category</h3>
+        <table class="data-table">
+          <thead><tr><th>Category</th><th>Count</th></tr></thead>
+          <tbody><tr><td>SEO</td><td>2</td></tr><tr><td>Accessibility</td><td>3</td></tr><tr><td>Performance</td><td>5</td></tr><tr><td>Security</td><td>1</td></tr><tr><td>Best Practice</td><td>2</td></tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">5 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section developer">
+        <h2>Developer Report</h2>
+        <p class="overview">13 findings grouped into 6 categories. Total estimated effort: 88 hours.</p>
+        <h3>Technical Debt</h3>
+        <p>Significant technical debt detected. 1 issues require complex refactoring (~14 hours).</p>
+        <h3>Quick Wins</h3>
+        <ul class="quick-wins"><li>Third-party script performance impact: Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.</li></ul>
+        <h3>Finding Groups</h3>
+        
+        <div class="finding-group">
+          <h4>Performance — Performance <span class="count">(5 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Largest Contentful Paint (LCP) exceeds 4s</span> <span class="severity-badge critical">Critical</span><br><span class="recommendation">Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.</span></li><li class="finding-item"><span class="finding-title">Total Blocking Time (TBT) exceeds 200ms</span> <span class="severity-badge high">High</span><br><span class="recommendation">Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.</span></li><li class="finding-item"><span class="finding-title">Cumulative Layout Shift (CLS) exceeds 0.1</span> <span class="severity-badge high">High</span><br><span class="recommendation">Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.</span></li><li class="finding-item"><span class="finding-title">Render-blocking resources on product pages</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.</span></li><li class="finding-item"><span class="finding-title">Image optimization opportunity</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Implement automatic image optimization pipeline with WebP/AVIF conversion.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Content <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Product images missing alt text</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add descriptive alt text including product name and key attributes.</span></li><li class="finding-item"><span class="finding-title">Price information not accessible to screen readers</span> <span class="severity-badge high">High</span><br><span class="recommendation">Use semantic HTML for prices (&lt;span class='price' aria-label='$29.99'&gt;) and ensure proper ARIA attributes.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Accessibility — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Shopping cart button not labeled</span> <span class="severity-badge high">High</span><br><span class="recommendation">Add aria-label='Shopping cart (3 items)' or visible text to the cart button.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Best Practice — Technical <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Third-party script performance impact</span> <span class="severity-badge high">High</span><br><span class="recommendation">Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.</span></li><li class="finding-item"><span class="finding-title">Cookie consent banner blocks content</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>SEO — Metadata <span class="count">(2 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Product pages missing structured data</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add JSON-LD Product schema with name, price, availability, and review data to all product pages.</span></li><li class="finding-item"><span class="finding-title">Product images missing descriptive filenames</span> <span class="severity-badge low">Low</span><br><span class="recommendation">Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').</span></li></ul>
+        </div>
+        <div class="finding-group">
+          <h4>Security — Technical <span class="count">(1 findings)</span></h4>
+          <ul class="findings-list"><li class="finding-item"><span class="finding-title">Missing security headers</span> <span class="severity-badge medium">Medium</span><br><span class="recommendation">Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.</span></li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">8 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section business">
+        <h2>Business Summary</h2>
+        <p class="overview">Total estimated effort: 88.00000000000001 hours ($13,200 at $150/hr). 13 findings with business impact assessments.</p>
+        <div class="financials">
+          <div class="stat"><span class="stat-value">88.00000000000001h</span><span class="stat-label">Total Effort</span></div>
+          <div class="stat"><span class="stat-value">$13,200</span><span class="stat-label">Estimated Cost</span></div>
+        </div>
+        <h3>ROI</h3>
+        <p>Addressing 6 high-impact issues first will reduce critical risk exposure. Estimated investment: $13,200 for 88.00000000000001 hours of work.</p>
+        <h3>Impact Summary</h3>
+        <table class="data-table">
+          <thead><tr><th>Finding</th><th>Impact</th><th>Effort</th><th>Hours</th><th>Priority</th></tr></thead>
+          <tbody><tr>
+        <td>Largest Contentful Paint (LCP) exceeds 4s</td>
+        <td><span class="impact-badge critical">Critical</span></td>
+        <td>Moderate</td>
+        <td>10.4h</td>
+        <td>80.0</td>
+      </tr><tr>
+        <td>Third-party script performance impact</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Easy</td>
+        <td>4.5h</td>
+        <td>78.0</td>
+      </tr><tr>
+        <td>Total Blocking Time (TBT) exceeds 200ms</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>7.8h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Cumulative Layout Shift (CLS) exceeds 0.1</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>7.8h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Price information not accessible to screen readers</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Moderate</td>
+        <td>9h</td>
+        <td>60.0</td>
+      </tr><tr>
+        <td>Product pages missing structured data</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Easy</td>
+        <td>2.4h</td>
+        <td>52.0</td>
+      </tr><tr>
+        <td>Cookie consent banner blocks content</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Easy</td>
+        <td>3h</td>
+        <td>52.0</td>
+      </tr><tr>
+        <td>Shopping cart button not labeled</td>
+        <td><span class="impact-badge high">High</span></td>
+        <td>Difficult</td>
+        <td>13.5h</td>
+        <td>42.0</td>
+      </tr><tr>
+        <td>Render-blocking resources on product pages</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Image optimization opportunity</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>5.2h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Product images missing alt text</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>6h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Missing security headers</td>
+        <td><span class="impact-badge medium">Medium</span></td>
+        <td>Moderate</td>
+        <td>12h</td>
+        <td>40.0</td>
+      </tr><tr>
+        <td>Product images missing descriptive filenames</td>
+        <td><span class="impact-badge low">Low</span></td>
+        <td>Trivial</td>
+        <td>1.2h</td>
+        <td>30.0</td>
+      </tr></tbody>
+        </table>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">26 data points verified</span>
+        
+      </div>
+      </section>
+
+      <section class="report-section roadmap">
+        <h2>Implementation Roadmap</h2>
+        <p class="overview">4 phases planned over 1-2 months. Total effort: 88 hours.</p>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-value">88h</span><span class="stat-label">Total Hours</span></div>
+          <div class="stat"><span class="stat-value">1-2 months</span><span class="stat-label">Timeline</span></div>
+        </div>
+        
+        <div class="roadmap-phase">
+          <h4>Phase 1: Critical Fixes</h4>
+          <div class="phase-meta"><span class="timeframe">1-3 days</span> — Address all critical severity issues immediately</div>
+          <div class="phase-hours">10.4 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Largest Contentful Paint (LCP) exceeds 4s</strong>
+            <span class="effort-badge">Moderate — 10.4h</span>
+            <p>Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 2: High Priority</h4>
+          <div class="phase-meta"><span class="timeframe">1-2 weeks</span> — Resolve high severity issues</div>
+          <div class="phase-hours">42.6 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Third-party script performance impact</strong>
+            <span class="effort-badge">Easy — 4.5h</span>
+            <p>Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Total Blocking Time (TBT) exceeds 200ms</strong>
+            <span class="effort-badge">Moderate — 7.8h</span>
+            <p>Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Cumulative Layout Shift (CLS) exceeds 0.1</strong>
+            <span class="effort-badge">Moderate — 7.8h</span>
+            <p>Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Price information not accessible to screen readers</strong>
+            <span class="effort-badge">Moderate — 9h</span>
+            <p>Use semantic HTML for prices (&lt;span class='price' aria-label='$29.99'&gt;) and ensure proper ARIA attributes.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Use semantic HTML for prices (&lt;span class='price' aria-label='$29.99'&gt;) and ensure proper ARIA attributes.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Shopping cart button not labeled</strong>
+            <span class="effort-badge">Difficult — 13.5h</span>
+            <p>Add aria-label='Shopping cart (3 items)' or visible text to the cart button.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Add aria-label='Shopping cart (3 items)' or visible text to the cart button.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 3: Medium Priority</h4>
+          <div class="phase-meta"><span class="timeframe">2-4 weeks</span> — Address moderate severity improvements</div>
+          <div class="phase-hours">33.8 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Product pages missing structured data</strong>
+            <span class="effort-badge">Easy — 2.4h</span>
+            <p>Add JSON-LD Product schema with name, price, availability, and review data to all product pages.</p>
+            <ul class="steps"><li>Identify affected metadata in codebase</li><li>Apply fix: Add JSON-LD Product schema with name, price, availability, and review data to all product pages.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Cookie consent banner blocks content</strong>
+            <span class="effort-badge">Easy — 3h</span>
+            <p>Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Render-blocking resources on product pages</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Image optimization opportunity</strong>
+            <span class="effort-badge">Moderate — 5.2h</span>
+            <p>Implement automatic image optimization pipeline with WebP/AVIF conversion.</p>
+            <ul class="steps"><li>Identify affected performance in codebase</li><li>Apply fix: Implement automatic image optimization pipeline with WebP/AVIF conversion.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Product images missing alt text</strong>
+            <span class="effort-badge">Moderate — 6h</span>
+            <p>Add descriptive alt text including product name and key attributes.</p>
+            <ul class="steps"><li>Identify affected content in codebase</li><li>Apply fix: Add descriptive alt text including product name and key attributes.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li>
+          <li class="roadmap-item">
+            <strong>Missing security headers</strong>
+            <span class="effort-badge">Moderate — 12h</span>
+            <p>Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.</p>
+            <ul class="steps"><li>Identify affected technical in codebase</li><li>Apply fix: Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        <div class="roadmap-phase">
+          <h4>Phase 4: Low Priority &amp; Cleanup</h4>
+          <div class="phase-meta"><span class="timeframe">1-2 months</span> — Handle low severity items and best practices</div>
+          <div class="phase-hours">1.2 hours</div>
+          <ul class="phase-items">
+          <li class="roadmap-item">
+            <strong>Product images missing descriptive filenames</strong>
+            <span class="effort-badge">Trivial — 1.2h</span>
+            <p>Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').</p>
+            <ul class="steps"><li>Identify affected metadata in codebase</li><li>Apply fix: Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').</li><li>Test fix in staging environment</li><li>Verify with automated audit tools</li></ul>
+          </li></ul>
+        </div>
+        
+      <div class="confidence-badge high">
+        <span class="label">Section Confidence</span>
+        <span class="score">100%</span>
+        <span class="rationale">13 data points verified</span>
+        
+      </div>
+      </section>
+
+      <footer class="report-footer">
+        <p>Report generated by ReplexAgent Report Agent</p>
+        <p class="confidence-footer">Confidence: 100% — Overall confidence across 5 sections. 101 total data points verified.</p>
+      </footer>
+</div>
+</body>
+</html>

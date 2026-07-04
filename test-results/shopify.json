@@ -1,0 +1,729 @@
+{
+  "report": {
+    "title": "Shopify",
+    "url": "https://www.shopify.com",
+    "generatedAt": "2026-07-04T12:09:30.177Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 101 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:320ce894-6182-479d-a463-b162253e670a",
+      "findingGroup:e05ff7df-40dd-49fc-a111-cd68ab95b08e",
+      "findingGroup:11213342-f473-4f41-9fa2-858da3efa4ff",
+      "findingGroup:3b938c0f-d23e-42dc-9ee9-e16b53cb1daa",
+      "findingGroup:a29e9862-e910-49cf-b841-624567710860",
+      "findingGroup:e30af383-babf-4da8-8b76-49ae2c2a4e0a",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:perf-004",
+      "impact:perf-005",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "priority:perf-001",
+      "priority:bp-001",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:a11y-002",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:a11y-003",
+      "priority:perf-004",
+      "priority:perf-005",
+      "priority:a11y-001",
+      "priority:bp-003",
+      "priority:seo-002",
+      "action:perf-001",
+      "action:bp-001",
+      "action:perf-002",
+      "action:perf-003",
+      "action:a11y-002",
+      "action:a11y-003",
+      "action:seo-001",
+      "action:bp-002",
+      "action:perf-004",
+      "action:perf-005",
+      "action:a11y-001",
+      "action:bp-003",
+      "action:seo-002",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Performance — Performance",
+      "group:Accessibility — Content",
+      "group:Accessibility — Technical",
+      "group:Best Practice — Technical",
+      "group:SEO — Metadata",
+      "group:Security — Technical",
+      "technicalDebt",
+      "quickWins",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:perf-004",
+      "impact:perf-005",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "priority:perf-001",
+      "priority:bp-001",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:a11y-002",
+      "priority:seo-001",
+      "priority:bp-002",
+      "priority:a11y-003",
+      "priority:perf-004",
+      "priority:perf-005",
+      "priority:a11y-001",
+      "priority:bp-003",
+      "priority:seo-002",
+      "roadmap:perf-001",
+      "roadmap:bp-001",
+      "roadmap:perf-002",
+      "roadmap:perf-003",
+      "roadmap:a11y-002",
+      "roadmap:a11y-003",
+      "roadmap:seo-001",
+      "roadmap:bp-002",
+      "roadmap:perf-004",
+      "roadmap:perf-005",
+      "roadmap:a11y-001",
+      "roadmap:bp-003",
+      "roadmap:seo-002"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://www.shopify.com identified 13 findings across 5 categories. 6 require immediate attention. Estimated total remediation effort: 88 hours.",
+    "overallRisk": "CRITICAL — Immediate action required",
+    "totalFindings": 13,
+    "bySeverity": {
+      "critical": 1,
+      "high": 5,
+      "medium": 6,
+      "low": 1,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 2,
+      "accessibility": 3,
+      "performance": 5,
+      "security": 1,
+      "best-practice": 2
+    },
+    "topAction": "Address \"Largest Contentful Paint (LCP) exceeds 4s\" (Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.)",
+    "estimatedTimeline": "1-2 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "13 findings grouped into 6 categories. Total estimated effort: 88 hours.",
+    "groups": [
+      {
+        "name": "Performance — Performance",
+        "count": 5,
+        "maxSeverity": "critical",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 4s",
+            "severity": "critical",
+            "recommendation": "Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset."
+          },
+          {
+            "id": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "severity": "high",
+            "recommendation": "Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts."
+          },
+          {
+            "id": "perf-003",
+            "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+            "severity": "high",
+            "recommendation": "Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio."
+          },
+          {
+            "id": "perf-004",
+            "title": "Render-blocking resources on product pages",
+            "severity": "medium",
+            "recommendation": "Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously."
+          },
+          {
+            "id": "perf-005",
+            "title": "Image optimization opportunity",
+            "severity": "medium",
+            "recommendation": "Implement automatic image optimization pipeline with WebP/AVIF conversion."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 2,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Product images missing alt text",
+            "severity": "medium",
+            "recommendation": "Add descriptive alt text including product name and key attributes."
+          },
+          {
+            "id": "a11y-002",
+            "title": "Price information not accessible to screen readers",
+            "severity": "high",
+            "recommendation": "Use semantic HTML for prices (<span class='price' aria-label='$29.99'>) and ensure proper ARIA attributes."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Technical",
+        "count": 1,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "a11y-003",
+            "title": "Shopping cart button not labeled",
+            "severity": "high",
+            "recommendation": "Add aria-label='Shopping cart (3 items)' or visible text to the cart button."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 2,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Third-party script performance impact",
+            "severity": "high",
+            "recommendation": "Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries."
+          },
+          {
+            "id": "bp-002",
+            "title": "Cookie consent banner blocks content",
+            "severity": "medium",
+            "recommendation": "Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Metadata",
+        "count": 2,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Product pages missing structured data",
+            "severity": "medium",
+            "recommendation": "Add JSON-LD Product schema with name, price, availability, and review data to all product pages."
+          },
+          {
+            "id": "seo-002",
+            "title": "Product images missing descriptive filenames",
+            "severity": "low",
+            "recommendation": "Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg')."
+          }
+        ]
+      },
+      {
+        "name": "Security — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "bp-003",
+            "title": "Missing security headers",
+            "severity": "medium",
+            "recommendation": "Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Significant technical debt detected. 1 issues require complex refactoring (~14 hours).",
+    "quickWins": [
+      "Third-party script performance impact: Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries."
+    ],
+    "confidence": {
+      "score": 1,
+      "rationale": "8 data points verified",
+      "verifiedDataPoints": [
+        "group:Performance — Performance",
+        "group:Accessibility — Content",
+        "group:Accessibility — Technical",
+        "group:Best Practice — Technical",
+        "group:SEO — Metadata",
+        "group:Security — Technical",
+        "technicalDebt",
+        "quickWins"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 88.00000000000001 hours ($13,200 at $150/hr). 13 findings with business impact assessments.",
+    "totalEffortHours": 88.00000000000001,
+    "estimatedCost": 13200.000000000002,
+    "impactSummary": [
+      {
+        "findingId": "perf-001",
+        "title": "Largest Contentful Paint (LCP) exceeds 4s",
+        "businessImpact": "critical",
+        "effort": "moderate",
+        "effortHours": 10.4,
+        "priorityScore": 80
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Third-party script performance impact",
+        "businessImpact": "high",
+        "effort": "easy",
+        "effortHours": 4.5,
+        "priorityScore": 78
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Total Blocking Time (TBT) exceeds 200ms",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "perf-003",
+        "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "a11y-002",
+        "title": "Price information not accessible to screen readers",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Product pages missing structured data",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 2.4,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Cookie consent banner blocks content",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 3,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "a11y-003",
+        "title": "Shopping cart button not labeled",
+        "businessImpact": "high",
+        "effort": "difficult",
+        "effortHours": 13.5,
+        "priorityScore": 42
+      },
+      {
+        "findingId": "perf-004",
+        "title": "Render-blocking resources on product pages",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "perf-005",
+        "title": "Image optimization opportunity",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "a11y-001",
+        "title": "Product images missing alt text",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 6,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "bp-003",
+        "title": "Missing security headers",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 12,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "seo-002",
+        "title": "Product images missing descriptive filenames",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.2,
+        "priorityScore": 30
+      }
+    ],
+    "roi": "Addressing 6 high-impact issues first will reduce critical risk exposure. Estimated investment: $13,200 for 88.00000000000001 hours of work.",
+    "confidence": {
+      "score": 1,
+      "rationale": "26 data points verified",
+      "verifiedDataPoints": [
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:perf-003",
+        "impact:perf-004",
+        "impact:perf-005",
+        "impact:a11y-001",
+        "impact:a11y-002",
+        "impact:a11y-003",
+        "impact:seo-001",
+        "impact:seo-002",
+        "impact:bp-001",
+        "impact:bp-002",
+        "impact:bp-003",
+        "priority:perf-001",
+        "priority:bp-001",
+        "priority:perf-002",
+        "priority:perf-003",
+        "priority:a11y-002",
+        "priority:seo-001",
+        "priority:bp-002",
+        "priority:a11y-003",
+        "priority:perf-004",
+        "priority:perf-005",
+        "priority:a11y-001",
+        "priority:bp-003",
+        "priority:seo-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "4 phases planned over 1-2 months. Total effort: 88 hours.",
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "description": "Address all critical severity issues immediately",
+        "timeframe": "1-3 days",
+        "items": [
+          {
+            "findingId": "perf-001",
+            "title": "Largest Contentful Paint (LCP) exceeds 4s",
+            "action": "Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.",
+            "effort": "moderate",
+            "effortHours": 10.4,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Implement lazy loading for product grid images, preload the hero image, and use responsive images with srcset.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 10.4,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:perf-001"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 2: High Priority",
+        "description": "Resolve high severity issues",
+        "timeframe": "1-2 weeks",
+        "items": [
+          {
+            "findingId": "bp-001",
+            "title": "Third-party script performance impact",
+            "action": "Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.",
+            "effort": "easy",
+            "effortHours": 4.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Audit third-party scripts, defer non-essential ones, and consider self-hosting critical libraries.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Total Blocking Time (TBT) exceeds 200ms",
+            "action": "Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Defer chat widget initialization, lazy-load product recommendation engine, and code-split checkout scripts.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-003",
+            "title": "Cumulative Layout Shift (CLS) exceeds 0.1",
+            "action": "Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Set explicit dimensions on all product images, reserve space for ad slots, and use CSS aspect-ratio.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-002",
+            "title": "Price information not accessible to screen readers",
+            "action": "Use semantic HTML for prices (<span class='price' aria-label='$29.99'>) and ensure proper ARIA attributes.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Use semantic HTML for prices (<span class='price' aria-label='$29.99'>) and ensure proper ARIA attributes.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-003",
+            "title": "Shopping cart button not labeled",
+            "action": "Add aria-label='Shopping cart (3 items)' or visible text to the cart button.",
+            "effort": "difficult",
+            "effortHours": 13.5,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add aria-label='Shopping cart (3 items)' or visible text to the cart button.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 42.6,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:bp-001",
+            "action:perf-002",
+            "action:perf-003",
+            "action:a11y-002",
+            "action:a11y-003"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Product pages missing structured data",
+            "action": "Add JSON-LD Product schema with name, price, availability, and review data to all product pages.",
+            "effort": "easy",
+            "effortHours": 2.4,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add JSON-LD Product schema with name, price, availability, and review data to all product pages.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-002",
+            "title": "Cookie consent banner blocks content",
+            "action": "Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.",
+            "effort": "easy",
+            "effortHours": 3,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Move cookie consent to a non-blocking banner or bottom sheet that doesn't prevent content access.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-004",
+            "title": "Render-blocking resources on product pages",
+            "action": "Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Inline critical CSS for product pages, defer non-essential scripts, and load third-party resources asynchronously.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-005",
+            "title": "Image optimization opportunity",
+            "action": "Implement automatic image optimization pipeline with WebP/AVIF conversion.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Implement automatic image optimization pipeline with WebP/AVIF conversion.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Product images missing alt text",
+            "action": "Add descriptive alt text including product name and key attributes.",
+            "effort": "moderate",
+            "effortHours": 6,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Add descriptive alt text including product name and key attributes.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-003",
+            "title": "Missing security headers",
+            "action": "Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.",
+            "effort": "moderate",
+            "effortHours": 12,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Add X-Frame-Options: SAMEORIGIN and X-Content-Type-Options: nosniff headers.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 33.8,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:bp-002",
+            "action:perf-004",
+            "action:perf-005",
+            "action:a11y-001",
+            "action:bp-003"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "seo-002",
+            "title": "Product images missing descriptive filenames",
+            "action": "Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').",
+            "effort": "trivial",
+            "effortHours": 1.2,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Rename image files to include product name and relevant keywords (e.g., 'red-cotton-tshirt.jpg').",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 1.2,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-002"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 88,
+    "estimatedTimeline": "1-2 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "13 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:perf-001",
+        "roadmap:bp-001",
+        "roadmap:perf-002",
+        "roadmap:perf-003",
+        "roadmap:a11y-002",
+        "roadmap:a11y-003",
+        "roadmap:seo-001",
+        "roadmap:bp-002",
+        "roadmap:perf-004",
+        "roadmap:perf-005",
+        "roadmap:a11y-001",
+        "roadmap:bp-003",
+        "roadmap:seo-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}

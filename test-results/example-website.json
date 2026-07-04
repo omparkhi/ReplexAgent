@@ -1,0 +1,790 @@
+{
+  "report": {
+    "title": "Example Website",
+    "url": "https://example.com",
+    "generatedAt": "2026-07-04T12:04:34.593Z",
+    "version": "1.0.0",
+    "agent": "replexagent-report-agent"
+  },
+  "confidence": {
+    "score": 1,
+    "rationale": "Overall confidence across 5 sections. 110 total data points verified.",
+    "verifiedDataPoints": [
+      "executiveSummary.totalFindings",
+      "executiveSummary.overallRisk",
+      "executiveSummary.bySeverity",
+      "executiveSummary.byCategory",
+      "findingGroup:bf6e0def-c8c7-423b-b4ae-56d5ce295086",
+      "findingGroup:04aea440-179f-4169-a434-ad0f873d0d26",
+      "findingGroup:80ae061d-cdec-478c-a706-fe78eab57177",
+      "findingGroup:6cdbac8d-dcf1-406c-aba5-ccafa23c41dd",
+      "findingGroup:6cc5f454-055c-4bc9-a9df-d28a5d040737",
+      "findingGroup:446140c1-b62a-4713-88cd-8210fb67448b",
+      "findingGroup:d2a06b6d-c4db-44c0-82eb-3388a5ca1928",
+      "findingGroup:65d75049-7b1e-41fb-be3d-da21118fab5e",
+      "impact:sec-001",
+      "impact:sec-002",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:seo-003",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "priority:a11y-001",
+      "priority:a11y-002",
+      "priority:perf-001",
+      "priority:sec-001",
+      "priority:seo-001",
+      "priority:sec-002",
+      "priority:a11y-003",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:seo-003",
+      "priority:bp-001",
+      "priority:bp-002",
+      "priority:bp-003",
+      "priority:seo-002",
+      "action:sec-001",
+      "action:perf-001",
+      "action:a11y-001",
+      "action:a11y-002",
+      "action:sec-002",
+      "action:seo-001",
+      "action:perf-002",
+      "action:perf-003",
+      "action:a11y-003",
+      "action:bp-002",
+      "action:seo-003",
+      "action:bp-001",
+      "action:bp-003",
+      "action:seo-002",
+      "totalFindings",
+      "overallRisk",
+      "bySeverity",
+      "byCategory",
+      "topAction",
+      "group:Security — Technical",
+      "group:Accessibility — Content",
+      "group:Performance — Performance",
+      "group:Accessibility — Technical",
+      "group:SEO — Metadata",
+      "group:SEO — Technical",
+      "group:Best Practice — Technical",
+      "group:Best Practice — Metadata",
+      "technicalDebt",
+      "impact:sec-001",
+      "impact:sec-002",
+      "impact:a11y-001",
+      "impact:a11y-002",
+      "impact:a11y-003",
+      "impact:perf-001",
+      "impact:perf-002",
+      "impact:perf-003",
+      "impact:seo-001",
+      "impact:seo-002",
+      "impact:seo-003",
+      "impact:bp-001",
+      "impact:bp-002",
+      "impact:bp-003",
+      "priority:a11y-001",
+      "priority:a11y-002",
+      "priority:perf-001",
+      "priority:sec-001",
+      "priority:seo-001",
+      "priority:sec-002",
+      "priority:a11y-003",
+      "priority:perf-002",
+      "priority:perf-003",
+      "priority:seo-003",
+      "priority:bp-001",
+      "priority:bp-002",
+      "priority:bp-003",
+      "priority:seo-002",
+      "roadmap:sec-001",
+      "roadmap:perf-001",
+      "roadmap:a11y-001",
+      "roadmap:a11y-002",
+      "roadmap:sec-002",
+      "roadmap:seo-001",
+      "roadmap:perf-002",
+      "roadmap:perf-003",
+      "roadmap:a11y-003",
+      "roadmap:bp-002",
+      "roadmap:seo-003",
+      "roadmap:bp-001",
+      "roadmap:bp-003",
+      "roadmap:seo-002"
+    ],
+    "excludedDataPoints": []
+  },
+  "executive": {
+    "title": "Executive Summary",
+    "overview": "Audit of https://example.com identified 14 findings across 5 categories. 5 require immediate attention. Estimated total remediation effort: 97 hours.",
+    "overallRisk": "CRITICAL — Immediate action required",
+    "totalFindings": 14,
+    "bySeverity": {
+      "critical": 1,
+      "high": 4,
+      "medium": 4,
+      "low": 5,
+      "info": 0
+    },
+    "byCategory": {
+      "seo": 3,
+      "accessibility": 3,
+      "performance": 3,
+      "security": 2,
+      "best-practice": 3
+    },
+    "topAction": "Address \"XSS vulnerability in search input\" (Sanitize and encode all user input before rendering. Implement Content Security Policy headers.)",
+    "estimatedTimeline": "1-2 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "5 data points verified",
+      "verifiedDataPoints": [
+        "totalFindings",
+        "overallRisk",
+        "bySeverity",
+        "byCategory",
+        "topAction"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "developer": {
+    "title": "Developer Report",
+    "overview": "14 findings grouped into 8 categories. Total estimated effort: 97 hours.",
+    "groups": [
+      {
+        "name": "Security — Technical",
+        "count": 2,
+        "maxSeverity": "critical",
+        "findings": [
+          {
+            "id": "sec-001",
+            "title": "XSS vulnerability in search input",
+            "severity": "critical",
+            "recommendation": "Sanitize and encode all user input before rendering. Implement Content Security Policy headers."
+          },
+          {
+            "id": "sec-002",
+            "title": "Mixed content (HTTP resources on HTTPS page)",
+            "severity": "high",
+            "recommendation": "Update all resource URLs to use HTTPS. Use protocol-relative URLs or explicit HTTPS."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Content",
+        "count": 2,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "a11y-001",
+            "title": "Missing alt text on images",
+            "severity": "high",
+            "recommendation": "Add descriptive alt text to all images. Use alt='' for decorative images."
+          },
+          {
+            "id": "a11y-002",
+            "title": "Insufficient color contrast",
+            "severity": "high",
+            "recommendation": "Increase text contrast to meet WCAG AA (4.5:1 for normal text, 3:1 for large text)."
+          }
+        ]
+      },
+      {
+        "name": "Performance — Performance",
+        "count": 3,
+        "maxSeverity": "high",
+        "findings": [
+          {
+            "id": "perf-001",
+            "title": "Slow server response time (TTFB)",
+            "severity": "high",
+            "recommendation": "Optimize server-side rendering, implement caching, use a CDN, and reduce database query complexity."
+          },
+          {
+            "id": "perf-002",
+            "title": "Unoptimized images",
+            "severity": "medium",
+            "recommendation": "Convert images to WebP/AVIF format. Implement responsive images with srcset."
+          },
+          {
+            "id": "perf-003",
+            "title": "Render-blocking JavaScript",
+            "severity": "medium",
+            "recommendation": "Add async or defer attributes to non-critical scripts. Inline critical CSS."
+          }
+        ]
+      },
+      {
+        "name": "Accessibility — Technical",
+        "count": 1,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "a11y-003",
+            "title": "Keyboard navigation trap in modal",
+            "severity": "medium",
+            "recommendation": "Implement focus trapping with Escape key support and visible close button."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Metadata",
+        "count": 2,
+        "maxSeverity": "medium",
+        "findings": [
+          {
+            "id": "seo-001",
+            "title": "Missing meta descriptions",
+            "severity": "medium",
+            "recommendation": "Add unique, compelling meta descriptions (120-160 characters) to all pages."
+          },
+          {
+            "id": "seo-003",
+            "title": "Missing structured data",
+            "severity": "low",
+            "recommendation": "Implement JSON-LD structured data for Organization, WebSite, and BreadcrumbList schemas."
+          }
+        ]
+      },
+      {
+        "name": "SEO — Technical",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "seo-002",
+            "title": "Missing robots.txt",
+            "severity": "low",
+            "recommendation": "Create a robots.txt file to guide search engine crawlers."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Technical",
+        "count": 2,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-001",
+            "title": "Deprecated HTML elements",
+            "severity": "low",
+            "recommendation": "Replace deprecated elements with semantic HTML and CSS."
+          },
+          {
+            "id": "bp-003",
+            "title": "Console errors in production",
+            "severity": "low",
+            "recommendation": "Fix JavaScript errors and implement error monitoring."
+          }
+        ]
+      },
+      {
+        "name": "Best Practice — Metadata",
+        "count": 1,
+        "maxSeverity": "low",
+        "findings": [
+          {
+            "id": "bp-002",
+            "title": "Missing viewport meta tag on 2 pages",
+            "severity": "low",
+            "recommendation": "Add <meta name='viewport' content='width=device-width, initial-scale=1'> to all pages."
+          }
+        ]
+      }
+    ],
+    "technicalDebt": "Significant technical debt detected. 2 issues require complex refactoring (~42 hours).",
+    "quickWins": [],
+    "confidence": {
+      "score": 1,
+      "rationale": "9 data points verified",
+      "verifiedDataPoints": [
+        "group:Security — Technical",
+        "group:Accessibility — Content",
+        "group:Performance — Performance",
+        "group:Accessibility — Technical",
+        "group:SEO — Metadata",
+        "group:SEO — Technical",
+        "group:Best Practice — Technical",
+        "group:Best Practice — Metadata",
+        "technicalDebt"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "business": {
+    "title": "Business Summary",
+    "overview": "Total estimated effort: 96.9 hours ($14,535 at $150/hr). 14 findings with business impact assessments.",
+    "totalEffortHours": 96.9,
+    "estimatedCost": 14535,
+    "impactSummary": [
+      {
+        "findingId": "a11y-001",
+        "title": "Missing alt text on images",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "a11y-002",
+        "title": "Insufficient color contrast",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "perf-001",
+        "title": "Slow server response time (TTFB)",
+        "businessImpact": "high",
+        "effort": "moderate",
+        "effortHours": 7.8,
+        "priorityScore": 60
+      },
+      {
+        "findingId": "sec-001",
+        "title": "XSS vulnerability in search input",
+        "businessImpact": "critical",
+        "effort": "difficult",
+        "effortHours": 24,
+        "priorityScore": 56
+      },
+      {
+        "findingId": "seo-001",
+        "title": "Missing meta descriptions",
+        "businessImpact": "medium",
+        "effort": "easy",
+        "effortHours": 2.4,
+        "priorityScore": 52
+      },
+      {
+        "findingId": "sec-002",
+        "title": "Mixed content (HTTP resources on HTTPS page)",
+        "businessImpact": "high",
+        "effort": "difficult",
+        "effortHours": 18,
+        "priorityScore": 42
+      },
+      {
+        "findingId": "a11y-003",
+        "title": "Keyboard navigation trap in modal",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 9,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "perf-002",
+        "title": "Unoptimized images",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "perf-003",
+        "title": "Render-blocking JavaScript",
+        "businessImpact": "medium",
+        "effort": "moderate",
+        "effortHours": 5.2,
+        "priorityScore": 40
+      },
+      {
+        "findingId": "seo-003",
+        "title": "Missing structured data",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.2,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "bp-001",
+        "title": "Deprecated HTML elements",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "bp-002",
+        "title": "Missing viewport meta tag on 2 pages",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 0.8,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "bp-003",
+        "title": "Console errors in production",
+        "businessImpact": "low",
+        "effort": "trivial",
+        "effortHours": 1.5,
+        "priorityScore": 30
+      },
+      {
+        "findingId": "seo-002",
+        "title": "Missing robots.txt",
+        "businessImpact": "low",
+        "effort": "easy",
+        "effortHours": 2.3,
+        "priorityScore": 26
+      }
+    ],
+    "roi": "Addressing 5 high-impact issues first will reduce critical risk exposure. Estimated investment: $14,535 for 96.9 hours of work.",
+    "confidence": {
+      "score": 1,
+      "rationale": "28 data points verified",
+      "verifiedDataPoints": [
+        "impact:sec-001",
+        "impact:sec-002",
+        "impact:a11y-001",
+        "impact:a11y-002",
+        "impact:a11y-003",
+        "impact:perf-001",
+        "impact:perf-002",
+        "impact:perf-003",
+        "impact:seo-001",
+        "impact:seo-002",
+        "impact:seo-003",
+        "impact:bp-001",
+        "impact:bp-002",
+        "impact:bp-003",
+        "priority:a11y-001",
+        "priority:a11y-002",
+        "priority:perf-001",
+        "priority:sec-001",
+        "priority:seo-001",
+        "priority:sec-002",
+        "priority:a11y-003",
+        "priority:perf-002",
+        "priority:perf-003",
+        "priority:seo-003",
+        "priority:bp-001",
+        "priority:bp-002",
+        "priority:bp-003",
+        "priority:seo-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "roadmap": {
+    "title": "Implementation Roadmap",
+    "overview": "4 phases planned over 1-2 months. Total effort: 96.89999999999999 hours.",
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "description": "Address all critical severity issues immediately",
+        "timeframe": "1-3 days",
+        "items": [
+          {
+            "findingId": "sec-001",
+            "title": "XSS vulnerability in search input",
+            "action": "Sanitize and encode all user input before rendering. Implement Content Security Policy headers.",
+            "effort": "difficult",
+            "effortHours": 24,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Locate element: #search-form input[name=q]",
+              "Apply fix: Sanitize and encode all user input before rendering. Implement Content Security Policy headers.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 24,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:sec-001"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 2: High Priority",
+        "description": "Resolve high severity issues",
+        "timeframe": "1-2 weeks",
+        "items": [
+          {
+            "findingId": "perf-001",
+            "title": "Slow server response time (TTFB)",
+            "action": "Optimize server-side rendering, implement caching, use a CDN, and reduce database query complexity.",
+            "effort": "moderate",
+            "effortHours": 7.8,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Optimize server-side rendering, implement caching, use a CDN, and reduce database query complexity.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-001",
+            "title": "Missing alt text on images",
+            "action": "Add descriptive alt text to all images. Use alt='' for decorative images.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Locate element: img:not([alt])",
+              "Apply fix: Add descriptive alt text to all images. Use alt='' for decorative images.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-002",
+            "title": "Insufficient color contrast",
+            "action": "Increase text contrast to meet WCAG AA (4.5:1 for normal text, 3:1 for large text).",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected content in codebase",
+              "Apply fix: Increase text contrast to meet WCAG AA (4.5:1 for normal text, 3:1 for large text).",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "sec-002",
+            "title": "Mixed content (HTTP resources on HTTPS page)",
+            "action": "Update all resource URLs to use HTTPS. Use protocol-relative URLs or explicit HTTPS.",
+            "effort": "difficult",
+            "effortHours": 18,
+            "owner": "Security Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Locate element: script[src^='http://'], link[rel='stylesheet'][href^='http://']",
+              "Apply fix: Update all resource URLs to use HTTPS. Use protocol-relative URLs or explicit HTTPS.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 43.8,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:perf-001",
+            "action:a11y-001",
+            "action:a11y-002",
+            "action:sec-002"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 3: Medium Priority",
+        "description": "Address moderate severity improvements",
+        "timeframe": "2-4 weeks",
+        "items": [
+          {
+            "findingId": "seo-001",
+            "title": "Missing meta descriptions",
+            "action": "Add unique, compelling meta descriptions (120-160 characters) to all pages.",
+            "effort": "easy",
+            "effortHours": 2.4,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Add unique, compelling meta descriptions (120-160 characters) to all pages.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-002",
+            "title": "Unoptimized images",
+            "action": "Convert images to WebP/AVIF format. Implement responsive images with srcset.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Apply fix: Convert images to WebP/AVIF format. Implement responsive images with srcset.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "perf-003",
+            "title": "Render-blocking JavaScript",
+            "action": "Add async or defer attributes to non-critical scripts. Inline critical CSS.",
+            "effort": "moderate",
+            "effortHours": 5.2,
+            "owner": "Engineering Team",
+            "steps": [
+              "Identify affected performance in codebase",
+              "Locate element: script:not([async]):not([defer])",
+              "Apply fix: Add async or defer attributes to non-critical scripts. Inline critical CSS.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "a11y-003",
+            "title": "Keyboard navigation trap in modal",
+            "action": "Implement focus trapping with Escape key support and visible close button.",
+            "effort": "moderate",
+            "effortHours": 9,
+            "owner": "Frontend Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Locate element: [role='dialog']",
+              "Apply fix: Implement focus trapping with Escape key support and visible close button.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 21.8,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:seo-001",
+            "action:perf-002",
+            "action:perf-003",
+            "action:a11y-003"
+          ],
+          "excludedDataPoints": []
+        }
+      },
+      {
+        "name": "Phase 4: Low Priority & Cleanup",
+        "description": "Handle low severity items and best practices",
+        "timeframe": "1-2 months",
+        "items": [
+          {
+            "findingId": "bp-002",
+            "title": "Missing viewport meta tag on 2 pages",
+            "action": "Add <meta name='viewport' content='width=device-width, initial-scale=1'> to all pages.",
+            "effort": "trivial",
+            "effortHours": 0.8,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Locate element: meta[name=viewport]",
+              "Apply fix: Add <meta name='viewport' content='width=device-width, initial-scale=1'> to all pages.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "seo-003",
+            "title": "Missing structured data",
+            "action": "Implement JSON-LD structured data for Organization, WebSite, and BreadcrumbList schemas.",
+            "effort": "trivial",
+            "effortHours": 1.2,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected metadata in codebase",
+              "Apply fix: Implement JSON-LD structured data for Organization, WebSite, and BreadcrumbList schemas.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-001",
+            "title": "Deprecated HTML elements",
+            "action": "Replace deprecated elements with semantic HTML and CSS.",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Locate element: center, font, marquee",
+              "Apply fix: Replace deprecated elements with semantic HTML and CSS.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "bp-003",
+            "title": "Console errors in production",
+            "action": "Fix JavaScript errors and implement error monitoring.",
+            "effort": "trivial",
+            "effortHours": 1.5,
+            "owner": "Development Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Fix JavaScript errors and implement error monitoring.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          },
+          {
+            "findingId": "seo-002",
+            "title": "Missing robots.txt",
+            "action": "Create a robots.txt file to guide search engine crawlers.",
+            "effort": "easy",
+            "effortHours": 2.3,
+            "owner": "Marketing/SEO Team",
+            "steps": [
+              "Identify affected technical in codebase",
+              "Apply fix: Create a robots.txt file to guide search engine crawlers.",
+              "Test fix in staging environment",
+              "Verify with automated audit tools"
+            ]
+          }
+        ],
+        "totalHours": 7.3,
+        "confidence": {
+          "score": 1,
+          "rationale": "All items from verified audit findings",
+          "verifiedDataPoints": [
+            "action:bp-002",
+            "action:seo-003",
+            "action:bp-001",
+            "action:bp-003",
+            "action:seo-002"
+          ],
+          "excludedDataPoints": []
+        }
+      }
+    ],
+    "totalEstimatedHours": 96.89999999999999,
+    "estimatedTimeline": "1-2 months",
+    "confidence": {
+      "score": 1,
+      "rationale": "14 data points verified",
+      "verifiedDataPoints": [
+        "roadmap:sec-001",
+        "roadmap:perf-001",
+        "roadmap:a11y-001",
+        "roadmap:a11y-002",
+        "roadmap:sec-002",
+        "roadmap:seo-001",
+        "roadmap:perf-002",
+        "roadmap:perf-003",
+        "roadmap:a11y-003",
+        "roadmap:bp-002",
+        "roadmap:seo-003",
+        "roadmap:bp-001",
+        "roadmap:bp-003",
+        "roadmap:seo-002"
+      ],
+      "excludedDataPoints": []
+    }
+  },
+  "metadata": {
+    "sourceAgent": "website-audit-agent",
+    "reportVersion": "1.0.0"
+  }
+}
